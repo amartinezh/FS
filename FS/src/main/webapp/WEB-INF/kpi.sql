@@ -1,6 +1,6 @@
-DROP DATABASE kpi;
+DROP DATABASE fs;
 
-CREATE DATABASE kpi
+CREATE DATABASE fs
   WITH OWNER = postgres
        ENCODING = 'UTF8'
        TABLESPACE = pg_default
@@ -8,15 +8,16 @@ CREATE DATABASE kpi
        LC_CTYPE = 'es_CO.UTF-8'
        CONNECTION LIMIT = -1;
 
-\c kpi;
+\c fs;
 
-CREATE SCHEMA kpi
+
+CREATE SCHEMA fs
   AUTHORIZATION postgres;
   
 CREATE SCHEMA gestion
   AUTHORIZATION postgres;
 
-CREATE TABLE kpi.MVINDVE(
+CREATE TABLE fs.MVINDVE(
   MVEANO integer NOT NULL DEFAULT 0, -- Año de proceso
   MVEMES integer NOT NULL DEFAULT 0, -- Mes de proceso
   MVEREG character varying(3), -- Region
@@ -83,7 +84,7 @@ ALTER TABLE gestion.region
 
 -- -------------------------------------------------------------------------------
 
-CREATE TABLE gestion.company
+CREATE TABLE ge stion.company
 (
   comp_id character varying(6) NOT NULL,
   region_id character varying(6),

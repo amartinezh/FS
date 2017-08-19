@@ -6,7 +6,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
          version="2.5">
          
-  <display-name>Kpi</display-name>
+  <display-name>FS</display-name>
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -18,7 +18,7 @@
   </listener>
            
   <servlet>
-    <servlet-name>kpi</servlet-name>
+    <servlet-name>fs</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
        <param-name>contextConfigLocation</param-name>
@@ -30,7 +30,7 @@
   
    
    <servlet-mapping>
-    <servlet-name>kpi</servlet-name>
+    <servlet-name>fs</servlet-name>
     <url-pattern>*.htm</url-pattern>   
     <url-pattern>/</url-pattern>
   </servlet-mapping>
