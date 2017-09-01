@@ -2,7 +2,7 @@ package service.kpi;
 
 import java.util.List;
 
-import domain.kpi.reporteManufacture1;
+import domain.fs.reporteManufacture1;
 import domain.session.session;
 
 public interface Manufactura1Service {

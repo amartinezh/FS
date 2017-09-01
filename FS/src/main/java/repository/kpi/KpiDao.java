@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import domain.adm.Region;
-import domain.kpi.Kpi;
-import domain.kpi.reporte;
+import domain.fs.Kpi;
+import domain.fs.reporte;
 //import domain.kpi.Reporte;
 import domain.session.session;
 

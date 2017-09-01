@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import domain.adm.Plan;
-import domain.kpi.reporteManufacture1;
+import domain.fs.reporteManufacture1;
 import domain.session.session;
 //import service.gestion.PlanService;
 import service.kpi.Manufactura1Service;

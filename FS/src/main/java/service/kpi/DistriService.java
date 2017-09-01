@@ -2,7 +2,7 @@ package service.kpi;
 
 import java.util.List;
 
-import domain.kpi.reporteDistri;
+import domain.fs.reporteDistri;
 import domain.session.session;
 
 public interface DistriService {

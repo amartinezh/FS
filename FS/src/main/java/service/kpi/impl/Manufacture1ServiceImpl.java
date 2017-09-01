@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import domain.kpi.reporteManufacture1;
+import domain.fs.reporteManufacture1;
 import domain.session.session;
 import repository.kpi.Manufacture1Dao;
 import service.kpi.Manufactura1Service;

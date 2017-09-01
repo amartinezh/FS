@@ -1,10 +1,10 @@
-package domain.kpi;
+package domain.fs;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class reporteManufacture1 implements Serializable{
+public class reporteDistri implements Serializable{
 
 	/**
 	 * 
@@ -20,14 +20,14 @@ public class reporteManufacture1 implements Serializable{
 	private BigDecimal promMvevpePresupuestadoAnt;
 	private BigDecimal promMvevalRealAnoActual; 
 	private BigDecimal promMvevpePresupuestadoAnoActual;
-	private List<Manufacture1> lista;
+	private List<Distri> lista;
 	private String tipo;
 	private String operacion;
 	
 	
-	public reporteManufacture1(String ind, String ind_cod, String unidad, String tipoUno, String tipoDos,
+	public reporteDistri(String ind, String ind_cod, String unidad, String tipoUno, String tipoDos,
 			BigDecimal promMvevalRealAnoAnt, BigDecimal promMvevpePresupuestadoAnt, BigDecimal promMvevalRealAnoActual,
-			BigDecimal promMvevpePresupuestadoAnoActual, List<Manufacture1> lista, String tipo, String operacion) {
+			BigDecimal promMvevpePresupuestadoAnoActual, List<Distri> lista, String tipo, String operacion) {
 		super();
 		this.ind = ind;
 		this.ind_cod = ind_cod;
@@ -134,12 +134,12 @@ public class reporteManufacture1 implements Serializable{
 	}
 
 
-	public List<Manufacture1> getLista() {
+	public List<Distri> getLista() {
 		return lista;
 	}
 
 
-	public void setLista(List<Manufacture1> lista) {
+	public void setLista(List<Distri> lista) {
 		this.lista = lista;
 	}
 

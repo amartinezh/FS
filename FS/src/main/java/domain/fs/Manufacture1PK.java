@@ -1,4 +1,4 @@
-package domain.kpi;
+package domain.fs;
 
 import java.io.Serializable;
 

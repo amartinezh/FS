@@ -1,10 +1,10 @@
-package domain.kpi;
+package domain.fs;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 
-public class KpiPK implements Serializable{
+public class HumanPK implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -19,6 +19,9 @@ public class KpiPK implements Serializable{
 	
 	@Column
 	private String mvecia;
+	
+	@Column
+	private String mveind;
 
 	@Override
 	public int hashCode() {
@@ -26,6 +29,7 @@ public class KpiPK implements Serializable{
 		int result = 1;
 		result = prime * result + ((mveano == null) ? 0 : mveano.hashCode());
 		result = prime * result + ((mvecia == null) ? 0 : mvecia.hashCode());
+		result = prime * result + ((mveind == null) ? 0 : mveind.hashCode());
 		result = prime * result + ((mvemes == null) ? 0 : mvemes.hashCode());
 		result = prime * result + ((mvereg == null) ? 0 : mvereg.hashCode());
 		return result;
@@ -39,7 +43,7 @@ public class KpiPK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		KpiPK other = (KpiPK) obj;
+		HumanPK other = (HumanPK) obj;
 		if (mveano == null) {
 			if (other.mveano != null)
 				return false;
@@ -49,6 +53,11 @@ public class KpiPK implements Serializable{
 			if (other.mvecia != null)
 				return false;
 		} else if (!mvecia.equals(other.mvecia))
+			return false;
+		if (mveind == null) {
+			if (other.mveind != null)
+				return false;
+		} else if (!mveind.equals(other.mveind))
 			return false;
 		if (mvemes == null) {
 			if (other.mvemes != null)
@@ -63,7 +72,6 @@ public class KpiPK implements Serializable{
 		return true;
 	}
 
-	
 	
 	
 }

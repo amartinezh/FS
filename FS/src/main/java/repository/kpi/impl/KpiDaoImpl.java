@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.adm.Cfg;
-import domain.kpi.Kpi;
-import domain.kpi.reporte;
+import domain.fs.Kpi;
+import domain.fs.reporte;
 import domain.session.session;
 import repository.kpi.KpiDao;
 import service.adm.CfgService;

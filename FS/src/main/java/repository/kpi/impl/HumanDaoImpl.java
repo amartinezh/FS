@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import domain.adm.CfgHuman;
-import domain.kpi.Human;
-import domain.kpi.reporteHuman;
+import domain.fs.Human;
+import domain.fs.reporteHuman;
 import domain.session.session;
 import repository.kpi.HumanDao;
 import service.adm.CfgHumanService;

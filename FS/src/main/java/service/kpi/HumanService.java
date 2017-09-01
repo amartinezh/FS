@@ -2,7 +2,7 @@ package service.kpi;
 
 import java.util.List;
 
-import domain.kpi.reporteHuman;
+import domain.fs.reporteHuman;
 import domain.session.session;
 
 public interface HumanService {

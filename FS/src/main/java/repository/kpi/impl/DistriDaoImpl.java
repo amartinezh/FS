@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
 
 import domain.adm.Cfg;
 import domain.adm.CfgDistri;
-import domain.kpi.Distri;
-import domain.kpi.reporteDistri;
+import domain.fs.Distri;
+import domain.fs.reporteDistri;
 import domain.session.session;
 import repository.kpi.DistriDao;
 import service.adm.CfgDistriService;

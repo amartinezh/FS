@@ -10,64 +10,130 @@ CREATE DATABASE fs
 
 \c fs;
 
-
 CREATE SCHEMA fs
   AUTHORIZATION postgres;
   
 CREATE SCHEMA gestion
   AUTHORIZATION postgres;
 
-CREATE TABLE fs.MVINDVE(
-  MVEANO integer NOT NULL DEFAULT 0, -- Año de proceso
-  MVEMES integer NOT NULL DEFAULT 0, -- Mes de proceso
-  MVEREG character varying(3), -- Region
-  MVECIA integer NOT NULL DEFAULT 0, -- Compañia
-  MVECIN character varying(30) NOT NULL, -- Nombre Compañia
-  MVEIND character varying(6) NOT NULL, -- ID. Indicador
-  MVEDES character varying(50) NOT NULL, -- Descripcion Indicador
-  MVECLI character varying(16) NOT NULL, -- Cliente
-  MVECLN character varying(50) NOT NULL, -- Nombre Cliente
-  MVETIC character varying(4) NOT NULL, -- Tipo Cliente
-  MVETIN character varying(25) NOT NULL, -- Nombre Tipo
-  MVELOC character varying(3) NOT NULL, -- Bodega/Localidad 
-  MVELON character varying(30) NOT NULL, -- Nombre Bodega/Localidad
-  MVECR1 character varying(5) NOT NULL, -- Area Cliente   Ref1
-  MVECN1 character varying(30) NOT NULL, -- Nombre Area
-  MVECR2 character varying(5) NOT NULL, -- Zona Cliente   Ref2
-  MVECN2 character varying(30) NOT NULL, -- Nombre Area
-  MVECR3 character varying(5) NOT NULL, -- Region Cliente Ref3
-  MVECN3 character varying(30) NOT NULL, -- Nombre Area
-  MVECR4 character varying(5) NOT NULL, -- Local Cliente  Ref4
-  MVECN4 character varying(30) NOT NULL, -- Nombre Area
-  MVECR5 character varying(5) NOT NULL, -- Distrito Clien Ref5
-  MVECN5 character varying(30) NOT NULL, -- Nombre Distrito
-  MVESAL character varying(4) NOT NULL, -- Vendedor
-  MVESAN character varying(30) NOT NULL, -- Nombre Vendedor
-  MVEPRO character varying(15) NOT NULL, -- Codigo Producto
-  MVEPRN character varying(50) NOT NULL, -- Nombre Producto
-  MVECAL character varying(2) NOT NULL, -- Clase Articulo
-  MVECAN character varying(30) NOT NULL, -- Nombre Clase Articulo
-  MVESR1 character varying(5) NOT NULL, -- Tipo Articulo  Ref1
-  MVESN1 character varying(30) NOT NULL, -- Nombre Tipo
-  MVESR2 character varying(5) NOT NULL, -- Grupo Articulo Ref2
-  MVESN2 character varying(30) NOT NULL, -- Nombre Grupo
-  MVESR3 character varying(5) NOT NULL, -- Linea Articulo Ref3
-  MVESN3 character varying(30) NOT NULL, -- Nombre Linea
-  MVESR4 character varying(5) NOT NULL, -- Cate Articulo  Ref4
-  MVESN4 character varying(30) NOT NULL, -- Nombre Categoria
-  MVESR5 character varying(5) NOT NULL, -- Marca Articulo Ref5
-  MVESN5 character varying(30) NOT NULL, -- Nombre Marca
-  MVEVAL double precision DEFAULT 0, -- Valor Indicador USD
-  MVEVAC double precision DEFAULT 0, -- Valor Indicador LOCAL
-  MVERID character varying(1) NOT NULL, -- Indicador Visualizar
-  MVEVAP double precision DEFAULT 0, -- Valor Indicador USD PROMEDIO
-  MVEVPE double precision DEFAULT 0, -- Valor Indicador PRESUPUESTO
-
-  CONSTRAINT tip_id_pk PRIMARY KEY (MVEANO, MVEMES, MVEREG, MVECIA, MVEIND, MVECLI, MVELOC, MVEPRO)
-)WITH (OIDS=FALSE); ALTER TABLE kpi.MVINDVE OWNER TO postgres;
-
+CREATE TABLE fs.CONPGML(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- mes actual 
+  CVALP character varying, -- mes ppto 
+  CVAR1 character varying, -- variacion
+  CVALMYA character varying, -- mes ano ant 
+  CVAR2 character varying, -- variacion
+  CVALMA character varying, -- mes anterior
+  CVAR3 character varying, -- variacion
+  CVALMD character varying, -- mes actual  
+  CVALPD character varying, -- mes ppto
+  CVAR1D character varying, -- variacion
+  CVALMYAD character varying, -- mes ano ant 
+  CVAR2D character varying, -- variacion
+  CVALMAD character varying, -- mes anterior
+  CVAR3D character varying, -- variacion
+  CONSTRAINT CONPGML_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONPGML OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
+
+CREATE TABLE fs.CONPGMU(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- mes actual 
+  CVALP character varying, -- mes ppto 
+  CVAR1 character varying, -- variacion
+  CVALMYA character varying, -- mes ano ant 
+  CVAR2 character varying, -- variacion
+  CVALMA character varying, -- mes anterior
+  CVAR3 character varying, -- variacion
+  CVALMD character varying, -- mes actual  
+  CVALPD character varying, -- mes ppto
+  CVAR1D character varying, -- variacion
+  CVALMYAD character varying, -- mes ano ant 
+  CVAR2D character varying, -- variacion
+  CVALMAD character varying, -- mes anterior
+  CVAR3D character varying, -- variacion
+  CONSTRAINT CONPGMU_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONPGMU OWNER TO postgres;
+
+-- -------------------------------------------------------------------------------
+
+CREATE TABLE fs.CONBSML(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- al mes actual 
+  CVALMA character varying, -- al mes anterior
+  CVALAA character varying, -- año anterior   
+  CVALMD character varying, -- al mes actual  
+  CVALMAD character varying, -- al mes anterior
+  CVALAAD character varying, -- año anterior    
+  
+  CONSTRAINT CONBSML_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONBSML OWNER TO postgres;
+
+-- -------------------------------------------------------------------------------
+
+CREATE TABLE fs.CONBSMU(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- al mes actual 
+  CVALMA character varying, -- al mes anterior
+  CVALAA character varying, -- año anterior   
+  CVALMD character varying, -- al mes actual  
+  CVALMAD character varying, -- al mes anterior
+  CVALAAD character varying, -- año anterior    
+  
+  CONSTRAINT CONBSMU_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONBSMU OWNER TO postgres;
+
+-- -------------------------------------------------------------------------------
+
+CREATE TABLE fs.CONPGAL(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- al mes actual 
+  CVALP character varying, -- al mes ppto   
+  CVAR1 character varying, -- variacion
+  CVALMYA character varying, -- mes ano ant 
+  CVAR2 character varying, -- variacion
+  CVALMD character varying, -- al mes actual 
+  CVALPD character varying, -- al mes ppto   
+  CVAR1D character varying, -- variacion
+  CVALMYAD character varying, -- al mes ano ant
+  CVAR2D character varying, -- variacion
+ 
+  CONSTRAINT CONPGAL_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAL OWNER TO postgres;
+
+-- -------------------------------------------------------------------------------
+
+CREATE TABLE fs.CONPGAU(
+  CCIA character varying NOT NULL , -- Año de proceso
+  CLINE character varying, -- 
+  CDESC character varying, -- 
+  CVALM character varying, -- al mes actual 
+  CVALP character varying, -- al mes ppto   
+  CVAR1 character varying, -- variacion
+  CVALMYA character varying, -- mes ano ant 
+  CVAR2 character varying, -- variacion
+  CVALMD character varying, -- al mes actual 
+  CVALPD character varying, -- al mes ppto   
+  CVAR1D character varying, -- variacion
+  CVALMYAD character varying, -- al mes ano ant
+  CVAR2D character varying, -- variacion
+ 
+  CONSTRAINT CONPGAU_pk PRIMARY KEY (CCIA, CLINE)
+)WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAU OWNER TO postgres;
+
+-- -------------------------------------------------------------------------------
+
 
 CREATE TABLE gestion.region
 (
@@ -84,7 +150,7 @@ ALTER TABLE gestion.region
 
 -- -------------------------------------------------------------------------------
 
-CREATE TABLE ge stion.company
+CREATE TABLE gestion.company
 (
   comp_id character varying(6) NOT NULL,
   region_id character varying(6),
@@ -274,7 +340,6 @@ INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VA
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('andreina.marron', '2b6f58e0b1d2179638f5537446419622','2' , '50', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('americo.valles', '88d18cda8bdc4f750137ecb61156c4f0','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('armando.hung', '907a7449b27021c9980a202c0981c65f','2' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('tara.persad', 'ead0a95787f77ac07ea5991934f789c3','1' , '30', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('sallyann.rampat', '0d38dd3e8e150a53478f1fe131fff1d8','1' , '33', '1');

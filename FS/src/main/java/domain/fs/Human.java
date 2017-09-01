@@ -1,4 +1,4 @@
-package domain.kpi;
+package domain.fs;
 
 import java.math.BigDecimal;
 
@@ -9,9 +9,9 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(FinancePK.class)
-@Table(name = "indfin", schema = "finances")
-public class Finance {
+@IdClass(HumanPK.class)
+@Table(name = "indrec", schema = "human")
+public class Human {
 	
 	private static final long serialVersionUID = -9068113467850707780L;
 	
@@ -34,6 +34,7 @@ public class Finance {
 	@Column(name = "mvecin")
 	private String mvecin; // Nombre Compañia
 	
+	@Id
 	@Column(name = "mveind")
 	private String mveind; // ID. Indicador
 	
@@ -55,7 +56,7 @@ public class Finance {
 	@Column(name = "mvevpe")
 	private BigDecimal mvevpe; // Valor Indicador PRESUPUESTO
 
-	public Finance(){
+	public Human(){
 		
 	}
 	
@@ -182,7 +183,7 @@ public class Finance {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Finance other = (Finance) obj;
+		Human other = (Human) obj;
 		if (mveano == null) {
 			if (other.mveano != null)
 				return false;
@@ -246,7 +247,7 @@ public class Finance {
 		return true;
 	}
 	
-	public Finance(String mveano, String mvemes) {
+	public Human(String mveano, String mvemes) {
 		this.mveano = mveano;
 		this.mvemes = mvemes;
 		this.mveval = new BigDecimal(0).setScale(0, BigDecimal.ROUND_HALF_EVEN);
@@ -255,7 +256,7 @@ public class Finance {
 		this.mvevpe = new BigDecimal(0).setScale(0, BigDecimal.ROUND_HALF_EVEN);;
 	}
 	
-	public Finance(String mveano, String mvemes, BigDecimal mveval, BigDecimal mvevac, BigDecimal mvevap,
+	public Human(String mveano, String mvemes, BigDecimal mveval, BigDecimal mvevac, BigDecimal mvevap,
 			BigDecimal mvevpe) {
 		super();
 		this.mveano = mveano;

@@ -1,10 +1,11 @@
-package domain.kpi;
+package domain.fs;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
-public class reporteFinance implements Serializable{
+public class reporte implements Serializable{
 
 	/**
 	 * 
@@ -20,12 +21,14 @@ public class reporteFinance implements Serializable{
 	private BigDecimal promMvevpePresupuestadoAnt;
 	private BigDecimal promMvevalRealAnoActual; 
 	private BigDecimal promMvevpePresupuestadoAnoActual;
-	private List<Finance> lista;
+	private List<Kpi> lista;
 	private String tipo;
+	private String operacion;
 	
-	public reporteFinance(String ind, String ind_cod, String unidad, String tipoUno, String tipoDos,
+	// Éste
+	public reporte(String ind, String ind_cod, String unidad, String tipoUno, String tipoDos,
 			BigDecimal promMvevalRealAnoAnt, BigDecimal promMvevpePresupuestadoAnt, BigDecimal promMvevalRealAnoActual,
-			BigDecimal promMvevpePresupuestadoAnoActual, List<Finance> lista, String tipo) {
+			BigDecimal promMvevpePresupuestadoAnoActual, List<Kpi> lista, String tipo, String operacion) {
 		super();
 		this.ind = ind;
 		this.ind_cod = ind_cod;
@@ -38,6 +41,7 @@ public class reporteFinance implements Serializable{
 		this.promMvevpePresupuestadoAnoActual = promMvevpePresupuestadoAnoActual;
 		this.lista = lista;
 		this.tipo = tipo;
+		this.operacion = operacion;
 	}
 
 	@Override
@@ -47,6 +51,7 @@ public class reporteFinance implements Serializable{
 		result = prime * result + ((ind == null) ? 0 : ind.hashCode());
 		result = prime * result + ((ind_cod == null) ? 0 : ind_cod.hashCode());
 		result = prime * result + ((lista == null) ? 0 : lista.hashCode());
+		result = prime * result + ((operacion == null) ? 0 : operacion.hashCode());
 		result = prime * result + ((promMvevalRealAnoActual == null) ? 0 : promMvevalRealAnoActual.hashCode());
 		result = prime * result + ((promMvevalRealAnoAnt == null) ? 0 : promMvevalRealAnoAnt.hashCode());
 		result = prime * result
@@ -58,7 +63,6 @@ public class reporteFinance implements Serializable{
 		result = prime * result + ((unidad == null) ? 0 : unidad.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,7 +71,7 @@ public class reporteFinance implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		reporteFinance other = (reporteFinance) obj;
+		reporte other = (reporte) obj;
 		if (ind == null) {
 			if (other.ind != null)
 				return false;
@@ -82,6 +86,11 @@ public class reporteFinance implements Serializable{
 			if (other.lista != null)
 				return false;
 		} else if (!lista.equals(other.lista))
+			return false;
+		if (operacion == null) {
+			if (other.operacion != null)
+				return false;
+		} else if (!operacion.equals(other.operacion))
 			return false;
 		if (promMvevalRealAnoActual == null) {
 			if (other.promMvevalRealAnoActual != null)
@@ -125,92 +134,78 @@ public class reporteFinance implements Serializable{
 			return false;
 		return true;
 	}
-
 	public String getInd() {
 		return ind;
 	}
-
 	public void setInd(String ind) {
 		this.ind = ind;
 	}
-
 	public String getInd_cod() {
 		return ind_cod;
 	}
-
 	public void setInd_cod(String ind_cod) {
 		this.ind_cod = ind_cod;
 	}
-
 	public String getUnidad() {
 		return unidad;
 	}
-
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
-
 	public String getTipoUno() {
 		return tipoUno;
 	}
-
 	public void setTipoUno(String tipoUno) {
 		this.tipoUno = tipoUno;
 	}
-
 	public String getTipoDos() {
 		return tipoDos;
 	}
-
 	public void setTipoDos(String tipoDos) {
 		this.tipoDos = tipoDos;
 	}
-
 	public BigDecimal getPromMvevalRealAnoAnt() {
 		return promMvevalRealAnoAnt;
 	}
-
 	public void setPromMvevalRealAnoAnt(BigDecimal promMvevalRealAnoAnt) {
 		this.promMvevalRealAnoAnt = promMvevalRealAnoAnt;
 	}
-
 	public BigDecimal getPromMvevpePresupuestadoAnt() {
 		return promMvevpePresupuestadoAnt;
 	}
-
 	public void setPromMvevpePresupuestadoAnt(BigDecimal promMvevpePresupuestadoAnt) {
 		this.promMvevpePresupuestadoAnt = promMvevpePresupuestadoAnt;
 	}
-
 	public BigDecimal getPromMvevalRealAnoActual() {
 		return promMvevalRealAnoActual;
 	}
-
 	public void setPromMvevalRealAnoActual(BigDecimal promMvevalRealAnoActual) {
 		this.promMvevalRealAnoActual = promMvevalRealAnoActual;
 	}
-
 	public BigDecimal getPromMvevpePresupuestadoAnoActual() {
 		return promMvevpePresupuestadoAnoActual;
 	}
-
 	public void setPromMvevpePresupuestadoAnoActual(BigDecimal promMvevpePresupuestadoAnoActual) {
 		this.promMvevpePresupuestadoAnoActual = promMvevpePresupuestadoAnoActual;
 	}
-
-	public List<Finance> getLista() {
+	public List<Kpi> getLista() {
 		return lista;
 	}
-
-	public void setLista(List<Finance> lista) {
+	public void setLista(List<Kpi> lista) {
 		this.lista = lista;
 	}
-
 	public String getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public String getOperacion() {
+		return operacion;
+	}
+	public void setOperacion(String operacion) {
+		this.operacion = operacion;
+	}
+	
+	
 }

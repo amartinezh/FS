@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import domain.adm.CfgFinance;
-import domain.kpi.Finance;
-import domain.kpi.reporteFinance;
+import domain.fs.Finance;
+import domain.fs.reporteFinance;
 import domain.session.session;
 import repository.kpi.FinancesDao;
 import service.adm.CfgFinanceService;

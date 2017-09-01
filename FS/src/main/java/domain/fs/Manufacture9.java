@@ -1,4 +1,4 @@
-package domain.kpi;
+package domain.fs;
 
 import java.math.BigDecimal;
 
@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(Manufacture1PK.class)
-@Table(name = "indman5", schema = "man")
-public class Manufacture5 {
+@Table(name = "indman9", schema = "man")
+public class Manufacture9 {
 	
 	private static final long serialVersionUID = -9068113467850707780L;
 	
@@ -91,7 +91,7 @@ public class Manufacture5 {
 	@Column(name = "mvevpe")
 	private BigDecimal mvevpe; // Valor Indicador PRESUPUESTO
 
-	public Manufacture5(){
+	public Manufacture9(){
 		
 	}
 
@@ -369,7 +369,7 @@ public class Manufacture5 {
 				+ ", mvevap=" + mvevap + ", mvevpe=" + mvevpe + "]";
 	}
 
-	public Manufacture5(String mveano, String mvemes) {
+	public Manufacture9(String mveano, String mvemes) {
 		this.mveano = mveano;
 		this.mvemes = mvemes;
 		this.mveval = new BigDecimal(0).setScale(0, BigDecimal.ROUND_HALF_EVEN);
@@ -378,7 +378,7 @@ public class Manufacture5 {
 		this.mvevpe = new BigDecimal(0).setScale(0, BigDecimal.ROUND_HALF_EVEN);;
 	}
 	
-	public Manufacture5(String mveano, String mvemes, BigDecimal mveval, BigDecimal mvevac, BigDecimal mvevap,
+	public Manufacture9(String mveano, String mvemes, BigDecimal mveval, BigDecimal mvevac, BigDecimal mvevap,
 			BigDecimal mvevpe) {
 		super();
 		this.mveano = mveano;

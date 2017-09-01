@@ -1,10 +1,10 @@
-package domain.kpi;
+package domain.fs;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 
-public class FinancePK implements Serializable{
+public class KpiPK implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -39,7 +39,7 @@ public class FinancePK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FinancePK other = (FinancePK) obj;
+		KpiPK other = (KpiPK) obj;
 		if (mveano == null) {
 			if (other.mveano != null)
 				return false;
@@ -63,5 +63,7 @@ public class FinancePK implements Serializable{
 		return true;
 	}
 
+	
+	
 	
 }

@@ -2,7 +2,7 @@ package repository.kpi;
 
 import java.util.List;
 
-import domain.kpi.reporteManufacture1;
+import domain.fs.reporteManufacture1;
 //import domain.kpi.Reporte;
 import domain.session.session;
 

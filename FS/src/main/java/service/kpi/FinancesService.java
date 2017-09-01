@@ -2,7 +2,7 @@ package service.kpi;
 
 import java.util.List;
 
-import domain.kpi.reporteFinance;
+import domain.fs.reporteFinance;
 import domain.session.session;
 
 public interface FinancesService {

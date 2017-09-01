@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import domain.adm.CfgManufacture1;
-import domain.kpi.Manufacture1;
-import domain.kpi.reporteManufacture1;
+import domain.fs.Manufacture1;
+import domain.fs.reporteManufacture1;
 import domain.session.session;
 import repository.kpi.Manufacture1Dao;
 import service.adm.CfgManufacture1Service;
