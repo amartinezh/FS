@@ -147,8 +147,8 @@
 			switch(op){
 				case 1 :
 					//location.target = "des";
-					location.href = "/kpi/user";
-					//window.open('/kpi/user','des'); 
+					//location.href = "/kpi/user";
+					window.open('/kpi/user','des'); 
 					break;
 				case 2 :
 					window.open('/kpi/region','des'); 

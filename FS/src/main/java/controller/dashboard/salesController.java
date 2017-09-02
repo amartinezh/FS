@@ -76,31 +76,23 @@ public class salesController {
 			model.addAttribute("r3g",r3g);
 			model.addAttribute("op10",op10);
 			model.addAttribute("n",((session) model.asMap().get("user_inicio")).getNivel());
+			System.out.println("Nia"+((session) model.asMap().get("user_inicio")).getNivel());
 			if (!nia.equals("n")){
 				((session) model.asMap().get("user_inicio")).setDash_nia(nia);
 				((session) model.asMap().get("user_inicio")).setDash_region(companyService.getCompanyRegion(nia).getRegion_id().getRegion_id());
 			}
 			switch (Integer.parseInt(op10)) {
-            	case 1: 
-            		model.addAttribute("view","salesMonth");
-            		model.addAttribute("viewFinance","/finance/financeMonth");
-            		model.addAttribute("viewHuman","/human/humanMonth");
-            		model.addAttribute("viewDistri","/distri/distriMonth");
-            		model.addAttribute("viewManufacture","/manu/manuMonth");
+            	case 1:
+            		model.addAttribute("viewl","/fs/pgal");
+            		model.addAttribute("viewu","/fs/pgau");
             		break;
-            	case 2: 
-            		model.addAttribute("view","salesYear");
-            		model.addAttribute("viewFinance","/finance/financeYear");
-            		model.addAttribute("viewHuman","/human/humanYear");
-            		model.addAttribute("viewDistri","/distri/distriYear");
-            		model.addAttribute("viewManufacture","/manu/manuYear");
+            	case 2:
+            		model.addAttribute("viewl","/fs/pgml");
+            		model.addAttribute("viewu","/fs/pgmu");
             		break;
             	case 3: 
-            		model.addAttribute("view", "salesQuarterly");
-            		model.addAttribute("viewFinance","/finance/financeQuarterly");
-            		model.addAttribute("viewHuman","/human/humanQuarterly");
-            		model.addAttribute("viewDistri","/distri/distriQuarterly");
-            		model.addAttribute("viewManufacture","/manu/manuQuarterly");
+            		model.addAttribute("viewl","/fs/bsml");
+            		model.addAttribute("viewu","/fs/bsmu");
             		break;
             	default:
             		break;

@@ -66,7 +66,8 @@ public class IndexController {
 			User uss = userManager.val(user.getId(), user.getPass());
 			if (uss != null) {
 				model.addAttribute("user_inicio", new session("mvevap", uss.getComp().getRegion_id().getRegion_id(), uss.getComp().getId(), "0", "mvevap", uss));
-				if (uss.getType().getId()==4)
+				System.out.println("TYPE"+uss.getType().getId());
+				if (uss.getType().getId()==3)
 					return "redirect:/indicadores/intruso";
 				else
 					return "redirect:/indicadores/inicio";

@@ -4,7 +4,7 @@
 <html lang="en-us" id="extr-page">
 	<head>
 		<meta charset="utf-8">
-		<title>Balanced Scorecard</title>
+		<title>Finance System</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -69,8 +69,10 @@
 					<h1> <c:out value="${tit}" /></h1>
 					<c:choose>
 					    <c:when test="${n == 1}">
-					       	<a class="btn btn-success btn-lg" href="<c:url value="${viewManufacture}"/>?t=${tit}&op10=${op10}">Manufacturing</a>
+					       	<a class="btn btn-warning btn-lg" href="${viewl}?t=${tit}&op10=${op10}">COP</a>
+							<a class="btn btn-info btn-lg" href="<c:url value="${viewu}"/>?t=${tit}&op10=${op10}">USD</a>
 					    </c:when>
+					   
 					    <c:when test="${n == 2}">
 					       <a class="btn btn-warning btn-lg" href="${view}?t=${tit}&op10=${op10}">Sales</a>
 					    </c:when>
