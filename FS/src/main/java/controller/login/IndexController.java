@@ -19,11 +19,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import domain.adm.Region;
 import domain.login.User;
 import domain.session.session;
-import repository.kpi.KpiDao;
+import repository.fs.bsmlDao;
 import service.adm.CompanyService;
 import service.adm.CurrencyService;
 import service.adm.TypeUserService;
-import service.kpi.KpiService;
+import service.fs.bsmlService;
 import service.login.UserManager;
 
 @Controller

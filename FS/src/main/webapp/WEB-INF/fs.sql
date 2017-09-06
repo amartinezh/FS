@@ -30,7 +30,7 @@ CREATE TABLE fs.CONPGML(
   CVALMA character varying, -- mes anterior
   CVAR3 character varying, -- variacion
  
-  CONSTRAINT CONPGML_pk PRIMARY KEY (CCIA, CLINE, CYEAR)
+  CONSTRAINT CONPGML_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGML OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ CREATE TABLE fs.CONPGMU(
   CVAR2 character varying, -- variacion
   CVALMA character varying, -- mes anterior
   CVAR3 character varying, -- variacion
-  CONSTRAINT CONPGMU_pk PRIMARY KEY (CCIA, CLINE)
+  CONSTRAINT CONPGMU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGMU OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE fs.CONBSML(
   CVALM character varying, -- al mes actual 
   CVALMA character varying, -- al mes anterior
   CVALAA character varying, -- año anterior
-  CONSTRAINT CONBSML_pk PRIMARY KEY (CCIA, CLINE)
+  CONSTRAINT CONBSML_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONBSML OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ CREATE TABLE fs.CONBSMU(
   CVALM character varying, -- al mes actual 
   CVALMA character varying, -- al mes anterior
   CVALAA character varying, -- año anterior
-  CONSTRAINT CONBSMU_pk PRIMARY KEY (CCIA, CLINE)
+  CONSTRAINT CONBSMU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONBSMU OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE fs.CONPGAL(
   CVAR1 character varying, -- variacion
   CVALMYA character varying, -- mes ano ant 
   CVAR2 character varying, -- variacion
-  CONSTRAINT CONPGAL_pk PRIMARY KEY (CCIA, CLINE)
+  CONSTRAINT CONPGAL_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAL OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ CREATE TABLE fs.CONPGAU(
   CVAR1 character varying, -- variacion
   CVALMYA character varying, -- mes ano ant 
   CVAR2 character varying, -- variacion
-  CONSTRAINT CONPGAU_pk PRIMARY KEY (CCIA, CLINE)
+  CONSTRAINT CONPGAU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAU OWNER TO postgres;
 
 -- -------------------------------------------------------------------------------
@@ -318,8 +318,8 @@ INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VA
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('javier.cordoba', 'a6f985740ba62728698bc11de7462ff9','1' , '30', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('andreina.marron', '2b6f58e0b1d2179638f5537446419622','2' , '50', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('americo.valles', '88d18cda8bdc4f750137ecb61156c4f0','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('armando.hung', '907a7449b27021c9980a202c0981c65f','2' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('americo.valles', 'c4ca4238a0b923820dcc509a6f75849b','3' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('armando.hung', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('tara.persad', 'ead0a95787f77ac07ea5991934f789c3','1' , '30', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('sallyann.rampat', '0d38dd3e8e150a53478f1fe131fff1d8','1' , '33', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('melissa.mahabir', 'fcd47b1e44436b441741e928dd6bb3c6','1' , '33', '1');
@@ -329,7 +329,7 @@ INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VA
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('roberto.palacio', '290874d6910f619e8a0e583316eddd12','1' , '01', '1');
 
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('angel.chacon', 'c7c59cb09991999fc7363cc87998a9b5','1' , '50', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('nelson.labrador', '9854c0a45d46715dd47e26cee847a38c','2' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('nelson.labrador', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1');
 
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('gonzalo.alvarez', '795b425d8685310b66c6934cb15ef55a','3' , '01', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('vicente.gonzalez', '68a96d195b07c9f61bcb33a5cd311e5a','3' , '01', '1');
