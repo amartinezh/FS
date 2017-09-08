@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import domain.adm.Plan;
+import domain.fs.Conbsml;
 import domain.session.session;
-//import service.gestion.PlanService;
 import service.fs.bsmlService;
 
 @Controller
@@ -23,7 +23,7 @@ import service.fs.bsmlService;
 public class dashController {
 
 	@Autowired
-	private bsmlService kpiService;
+	private bsmlService Service;
 	
 	@Autowired
 	private service.adm.RegionService regionService;
@@ -74,7 +74,8 @@ public class dashController {
 			model.addAttribute("tit",t);
 			model.addAttribute("r3g",r3g);
 			model.addAttribute("op10",op10);
-			model.addAttribute("n",((session) model.asMap().get("user_inicio")).getNivel());
+			//model.addAttribute("n",((session) model.asMap().get("user_inicio")).getNivel());
+			model.addAttribute("n","1");
 			System.out.println("Nia"+((session) model.asMap().get("user_inicio")).getNivel());
 			if (!nia.equals("n")){
 				((session) model.asMap().get("user_inicio")).setDash_nia(nia);
@@ -82,8 +83,8 @@ public class dashController {
 			}
 			switch (Integer.parseInt(op10)) {
             	case 1:
-            		model.addAttribute("viewl","/fs/pgal");
-            		model.addAttribute("viewu","/fs/pgau");
+            		model.addAttribute("viewl","bsml");
+            		model.addAttribute("viewu","bsmu");
             		break;
             	case 2:
             		model.addAttribute("viewl","/fs/pgml");
@@ -128,5 +129,31 @@ public class dashController {
 		}
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/bsml", method = RequestMethod.GET)
+	public String salesYear(Model model, @RequestParam String t, @RequestParam String op10) {
+		if (model.containsAttribute("user_inicio") == true) {
+			model.addAttribute("tit",t);
+			String r=((session) model.asMap().get("user_inicio")).getDash_region();
+			String n=((session) model.asMap().get("user_inicio")).getDash_nia();
+			int m= Integer.parseInt(((session) model.asMap().get("user_inicio")).getMes());
+			if (!r.equals("Todas")) r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
+			if (!n.equals("Todas")) n = companyService.listCompany__(((session) model.asMap().get("user_inicio")).getDash_nia()).get(0).getDescripcion();
+			List<Conbsml> listado = Service.list(((session) model.asMap().get("user_inicio")).getDash_nia());
+			return "fs/bsml";
+		} else {
+			return "redirect:/index/ingreso";
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/salir", method = RequestMethod.GET)
+	public String salir(Model model, SessionStatus status) {
+		status.setComplete();
+		
+		return "redirect:/index/ingreso";
+	}
 	
 }
