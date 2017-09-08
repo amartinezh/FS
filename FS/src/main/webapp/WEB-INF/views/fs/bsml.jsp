@@ -40,9 +40,9 @@
 <body>
  
 <div class="flex-container">
-  <div class="flex-item">${meta}flex item </div>
-  <div class="center">flex item </div>
-  <div class="flex-item"></div>  
+  <div class="flex-item">BIO PACOL </div>
+  <div class="center">Consolidate </div>
+  <div class="flex-item">XXXXXXX</div>  
 </div>
 
 <div class="flex-container">
