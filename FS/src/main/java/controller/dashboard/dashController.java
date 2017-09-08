@@ -134,6 +134,7 @@ public class dashController {
 	@RequestMapping(value = "/bsml", method = RequestMethod.GET)
 	public String salesYear(Model model, @RequestParam String t, @RequestParam String op10) {
 		if (model.containsAttribute("user_inicio") == true) {
+			StringBuffer buf = new StringBuffer();
 			model.addAttribute("tit",t);
 			String r=((session) model.asMap().get("user_inicio")).getDash_region();
 			String n=((session) model.asMap().get("user_inicio")).getDash_nia();
@@ -141,6 +142,11 @@ public class dashController {
 			if (!r.equals("Todas")) r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
 			if (!n.equals("Todas")) n = companyService.listCompany__(((session) model.asMap().get("user_inicio")).getDash_nia()).get(0).getDescripcion();
 			List<Conbsml> listado = Service.list(((session) model.asMap().get("user_inicio")).getDash_nia());
+			for (Conbsml conbsml : listado) {
+				buf.append(conbsml.getCcia()+"TABLE");
+			}
+			model.addAttribute("meta",buf);
+			model.addAttribute("bsml",listado);
 			return "fs/bsml";
 		} else {
 			return "redirect:/index/ingreso";

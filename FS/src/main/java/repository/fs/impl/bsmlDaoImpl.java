@@ -30,7 +30,8 @@ public class bsmlDaoImpl implements bsmlDao {
 	// list //////////////////////////////////////////////////////////////////////////////////
 
 	public List<Conbsml> list(String cia) {
-		return em.createQuery("SELECT C FROM Conbsml as C WHERE C.ccia = '"+cia+"'").getResultList();
+		//return em.createQuery("SELECT C FROM Conbsml as C WHERE C.ccia = '"+cia+"'").getResultList();
+		return em.createQuery("SELECT C FROM Conbsml as C").getResultList();
 	}
 	
 	// //////////////////////////////////////////////////////////////////////////////////
