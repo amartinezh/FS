@@ -18,7 +18,7 @@ CREATE SCHEMA gestion
 
 CREATE TABLE fs.CONPGML(
   CCIA character varying NOT NULL , -- 
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, -- 
   CYEAR character varying, -- Año de proceso
   CPERS character varying, -- Periódo
@@ -37,7 +37,7 @@ CREATE TABLE fs.CONPGML(
 
 CREATE TABLE fs.CONPGMU(
   CCIA character varying NOT NULL , -- 
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, -- 
   CYEAR character varying, -- Año de proceso
   CPERS character varying, -- Periódo
@@ -55,7 +55,7 @@ CREATE TABLE fs.CONPGMU(
 
 CREATE TABLE fs.CONBSML(
   CCIA character varying NOT NULL , -- Año de proceso
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, --
   CYEAR character varying, -- Año
   CPERS character varying, -- Periódo
@@ -69,7 +69,7 @@ CREATE TABLE fs.CONBSML(
 
 CREATE TABLE fs.CONBSMU(
   CCIA character varying NOT NULL , -- Año de proceso
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, --
   CYEAR character varying, -- Año
   CPERS character varying, -- Periódo
@@ -83,7 +83,7 @@ CREATE TABLE fs.CONBSMU(
 
 CREATE TABLE fs.CONPGAL(
   CCIA character varying NOT NULL , -- Año de proceso
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, --
   CYEAR character varying, -- Año
   CPERS character varying, -- Periódo 
@@ -99,7 +99,7 @@ CREATE TABLE fs.CONPGAL(
 
 CREATE TABLE fs.CONPGAU(
   CCIA character varying NOT NULL , -- Año de proceso
-  CLINE character varying, -- 
+  CLINE integer, -- 
   CDESC character varying, --
   CYEAR character varying, -- Año
   CPERS character varying, -- Periódo 
@@ -134,6 +134,7 @@ CREATE TABLE gestion.company
   comp_id character varying(6) NOT NULL,
   region_id character varying(6),
   comp_desc character varying(255),
+  nit character varying(55),
   CONSTRAINT comp_id_pk PRIMARY KEY (comp_id),
   CONSTRAINT region_fk FOREIGN KEY (region_id)
       REFERENCES gestion.region (region_id)  
@@ -294,18 +295,18 @@ INSERT INTO gestion.region(region_id, descripcion) VALUES ('PAN','PANAMA');
 INSERT INTO gestion.region(region_id, descripcion) VALUES ('TRI','TRINIDAD');
 INSERT INTO gestion.region(region_id, descripcion) VALUES ('GUA','GUATEMALA');
 
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('01', 'COL', 'PAPELES NACIONALES S.A');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('05', 'COL', 'GB BIOPACOL ANDINA S.A.S.');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('10', 'VEN', 'PAPELES VENEZOLANOS C.A.');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('24', 'VEN', 'DESARROLLOS FORESTALES S.C. II');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('50', 'PAN', 'PAPELERA ISTMEÑA S.A.');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('30', 'TRI', 'GRANDBAY PAPER PRODUCTS LIMITE');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('33', 'TRI', 'TRINIDAD TISSUE');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('12', 'GUA', 'PAPELERA LAT.DE NICARAGUA,S.A');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('14', 'GUA', 'RED ECOLOGICA Y PAPEL S.A. COSTA RICA');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('16', 'GUA', 'PAINSA EL SALVADOR,S.A.DE C.V.');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('17', 'GUA', 'PAINSA DE HONDURAS,S.A.DE C.V.');
-INSERT INTO gestion.company(comp_id, region_id, comp_desc) VALUES ('20', 'GUA', 'PAPELERA INTERNACIONAL, S.A.');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('01', 'COL', 'PAPELES NACIONALES S.A', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('05', 'COL', 'GB BIOPACOL ANDINA S.A.S.', '900588276-4');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('10', 'VEN', 'PAPELES VENEZOLANOS C.A.', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('24', 'VEN', 'DESARROLLOS FORESTALES S.C. II', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('50', 'PAN', 'PAPELERA ISTMEÑA S.A.', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('30', 'TRI', 'GRANDBAY PAPER PRODUCTS LIMITE', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('33', 'TRI', 'TRINIDAD TISSUE', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('12', 'GUA', 'PAPELERA LAT.DE NICARAGUA,S.A', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('14', 'GUA', 'RED ECOLOGICA Y PAPEL S.A. COSTA RICA', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('16', 'GUA', 'PAINSA EL SALVADOR,S.A.DE C.V.', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('17', 'GUA', 'PAINSA DE HONDURAS,S.A.DE C.V.', '900.900.900.900');
+INSERT INTO gestion.company(comp_id, region_id, comp_desc, nit) VALUES ('20', 'GUA', 'PAPELERA INTERNACIONAL, S.A.', '900.900.900.900');
 
 INSERT INTO gestion.currency(currency_id, currency_desc) VALUES ('0', 'USD');
 INSERT INTO gestion.currency(currency_id, currency_desc) VALUES ('1', 'LOCAL');
@@ -313,30 +314,38 @@ INSERT INTO gestion.type_users(id, descripcion) VALUES ('1', 'Usuario');
 INSERT INTO gestion.type_users(id, descripcion)VALUES ('2', 'Regional');
 INSERT INTO gestion.type_users(id, descripcion)VALUES ('3', 'Superuser');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('jesus.acevedo', '4b5833f2a579479ffa089123021612d6','2' , '10', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('fredy.gonzalez', '66b93908e158433a1b1d52d330a09168','2' , '20', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('javier.cordoba', 'a6f985740ba62728698bc11de7462ff9','1' , '30', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('andreina.marron', '2b6f58e0b1d2179638f5537446419622','2' , '50', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('americo.valles', 'c4ca4238a0b923820dcc509a6f75849b','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('armando.hung', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('tara.persad', 'ead0a95787f77ac07ea5991934f789c3','1' , '30', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('sallyann.rampat', '0d38dd3e8e150a53478f1fe131fff1d8','1' , '33', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('melissa.mahabir', 'fcd47b1e44436b441741e928dd6bb3c6','1' , '33', '1');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Saleman', 'Operational');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Supervisor', 'Operational');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('District Manager', 'Tactical');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Middle Manager', 'Tactical');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Area Manager', 'Estrategic');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('General Manager', 'Estrategic');
+INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Regional V.P.', 'Estrategic');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('fredy.gomez', '4b43ae1b3c0a4cbfd79ea45be7da4236','1' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('esteban.gomez', '8c5d7a099c93ad64bc8179186ddc07d4','1' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('roberto.palacio', '290874d6910f619e8a0e583316eddd12','1' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('jesus.acevedo', '4b5833f2a579479ffa089123021612d6','2' , '10', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('fredy.gonzalez', '66b93908e158433a1b1d52d330a09168','2' , '20', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('javier.cordoba', 'a6f985740ba62728698bc11de7462ff9','1' , '30', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('andreina.marron', '2b6f58e0b1d2179638f5537446419622','2' , '50', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('americo.valles', 'c4ca4238a0b923820dcc509a6f75849b','3' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('armando.hung', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('tara.persad', 'ead0a95787f77ac07ea5991934f789c3','1' , '30', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('sallyann.rampat', '0d38dd3e8e150a53478f1fe131fff1d8','1' , '33', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('melissa.mahabir', 'fcd47b1e44436b441741e928dd6bb3c6','1' , '33', '1', '1');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('angel.chacon', 'c7c59cb09991999fc7363cc87998a9b5','1' , '50', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('nelson.labrador', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('fredy.gomez', '4b43ae1b3c0a4cbfd79ea45be7da4236','1' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('esteban.gomez', '8c5d7a099c93ad64bc8179186ddc07d4','1' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('roberto.palacio', '290874d6910f619e8a0e583316eddd12','1' , '01', '1', '1');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('gonzalo.alvarez', '795b425d8685310b66c6934cb15ef55a','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('vicente.gonzalez', '68a96d195b07c9f61bcb33a5cd311e5a','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('antonio.bruni', '9259595e9948a56494961874c68245df','3' , '01', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('antonio.neri', 'cb1dc087fab57e79337e1582b9b1ffe2','3' , '01', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('angel.chacon', 'c7c59cb09991999fc7363cc87998a9b5','1' , '50', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('nelson.labrador', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1', '1');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id) VALUES ('ricauter.jurado', '643e8cff3f108b36b2b3aa816ecebe37','2' , '50', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('gonzalo.alvarez', '795b425d8685310b66c6934cb15ef55a','3' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('vicente.gonzalez', '68a96d195b07c9f61bcb33a5cd311e5a','3' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('antonio.bruni', '9259595e9948a56494961874c68245df','3' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('antonio.neri', 'cb1dc087fab57e79337e1582b9b1ffe2','3' , '01', '1', '1');
+
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('ricauter.jurado', '643e8cff3f108b36b2b3aa816ecebe37','2' , '50', '1', '1');
 
 
 INSERT INTO gestion.cfg(indicador, operacion, area, division, descripcion, unidad, tipo) VALUES ('VEN001', 'SUM', 'Comercial', '', 'Ventas', 'Own Cases', 'V');
@@ -361,14 +370,6 @@ INSERT INTO gestion.cfg(indicador, operacion, area, division, descripcion, unida
 INSERT INTO gestion.cfg(indicador, operacion, area, division, descripcion, unidad, tipo) VALUES ('VEN018', 'AVG', 'Comercial', '', 'Gastos de Ventas y Marketing', '% Revenue', '$');
 INSERT INTO gestion.cfg(indicador, operacion, area, division, descripcion, unidad, tipo) VALUES ('VEN019', 'SUM', 'Comercial', '', 'Gastos de Ventas y Marketing', 'USD/Ton Sold.', 'V');
 INSERT INTO gestion.cfg(indicador, operacion, area, division, descripcion, unidad, tipo) VALUES ('VEN020', 'SUM', 'Comercial', '', 'OSHA', '#', 'V');
-
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Saleman', 'Operational');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Supervisor', 'Operational');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('District Manager', 'Tactical');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Middle Manager', 'Tactical');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Area Manager', 'Estrategic');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('General Manager', 'Estrategic');
-INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Regional V.P.', 'Estrategic');
 
 INSERT INTO gestion.indicador_nivel(indicador, nivel_organico_id) VALUES ('VEN001', 1);
 INSERT INTO gestion.indicador_nivel(indicador, nivel_organico_id) VALUES ('VEN001', 2);
