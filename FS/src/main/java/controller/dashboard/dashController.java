@@ -148,14 +148,32 @@ public class dashController {
 			
 			buf.append("<!DOCTYPE html><html><head><title>Finance System</title>");
 			buf.append("<style>table { border-collapse: collapse; width: 100%; line-height: 100%; font: 90% monospace; table-layout: fixed; } th {    text-align: center; padding: 10px; font: 90% monospace;} td { padding: 0px;} body { margin-top: 20px; margin-left: 50px; }</style></head>");
-			buf.append("<body> <div style=\"overflow-x:auto;\"><table style=\" white-space: pre\"><tr><td align=\"left\" colspan=\"4\">GB BIOPACOL ANDINA S.A.S <br/> N.I.T.:  900588276 - 4  <br/> CON060R5 </td> <th colspan=\"4\">CONSOLIDATED BELANCE SHEET INFORMATION <br/>PRELIMINARY <br/>FEBRUARY  2.017 <br/>COP ('000') </th> <th colspan=\"4\"></th> </tr> <tr> <td colspan=\"4\"></td> <td align=\"right\">ACTUAL</td><td align=\"right\">LAST MONTH</td> <td align=\"right\">LAST YEAR</td> <td align=\"right\"></td> <td align=\"right\"></td><td align=\"right\"></td> </tr>");
+			buf.append("<body> <div style=\"overflow-x:auto;\"><table style=\" white-space: pre\"><tr><td align=\"left\" colspan=\"4\">GB BIOPACOL ANDINA S.A.S <br/> N.I.T.:  900588276 - 4  <br/> CON060R5 </td> <th colspan=\"4\">CONSOLIDATED BELANCE SHEET INFORMATION <br/>PRELIMINARY <br/>FEBRUARY  2.017 <br/>COP ('000') </th> <th colspan=\"4\"></th> </tr> ");
+			buf.append("<tr> <td colspan=\"4\"></td> <td align=\"right\">==============</td><td align=\"right\">==============</td> <td align=\"right\">==============</td> <td align=\"right\"></td> <td align=\"right\"></td><td align=\"right\"></td> </tr>");
+			buf.append("<tr> <td colspan=\"4\"></td> <td align=\"right\">ACTUAL</td><td align=\"right\">LAST MONTH</td> <td align=\"right\">LAST YEAR</td> <td align=\"right\"></td> <td align=\"right\"></td><td align=\"right\"></td> </tr>");
+			buf.append("<tr> <td colspan=\"4\"></td> <td align=\"right\">==============</td><td align=\"right\">==============</td> <td align=\"right\">==============</td> <td align=\"right\"></td> <td align=\"right\"></td><td align=\"right\"></td> </tr>");
 			String style="";
 			for (Conbsml conbsml : listado) {
-				style = (conbsml.getCdesc().equals("LINEA"))?"border-style: solid none none none":((conbsml.getCdesc().equals("DOBLE LINEA"))?"border-style: dashed none none none":"");
+				//style = (conbsml.getCdesc().equals("LINEA"))?"border-style: solid none none none":((conbsml.getCdesc().equals("DOBLE LINEA"))?"border-style: dashed none none none":"");
 				buf.append("<tr><td colspan=\"4\">"+conbsml.getCdesc()+"</td>");
-				buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalaa())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalaa())))+"</td>");
-				buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalm())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalm())))+"</td>");
-				buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalma())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalma())))+"</td>");
+				if (conbsml.getCdesc().equals("LINEA")){
+					buf.append("<td style=\""+style+"\" align=\"right\">______________</td>");
+					buf.append("<td style=\""+style+"\" align=\"right\">______________</td>");
+					buf.append("<td style=\""+style+"\" align=\"right\">______________</td>");
+				}
+				else{
+					if (conbsml.getCdesc().equals("DOBLE LINEA")){
+						buf.append("<td style=\""+style+"\" align=\"right\">==============</td>");
+						buf.append("<td style=\""+style+"\" align=\"right\">==============</td>");
+						buf.append("<td style=\""+style+"\" align=\"right\">==============</td>");
+					}
+					else{
+						buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalaa())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalaa())))+"</td>");
+						buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalm())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalm())))+"</td>");
+						buf.append("<td style=\""+style+"\" align=\"right\">"+((ftm.format(Double.parseDouble(conbsml.getCvalma())).equals("0"))?"":ftm.format(Double.parseDouble(conbsml.getCvalma())))+"</td>");
+					}
+				}
+				buf.append("<td align=\"right\"></td>");
 				buf.append("<td align=\"right\"></td>");
 				buf.append("<td align=\"right\"></td>");
 				buf.append("<td align=\"right\"></td>");
