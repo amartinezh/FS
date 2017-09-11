@@ -322,28 +322,10 @@ INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Area 
 INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('General Manager', 'Estrategic');
 INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Regional V.P.', 'Estrategic');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('jesus.acevedo', '4b5833f2a579479ffa089123021612d6','2' , '10', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('fredy.gonzalez', '66b93908e158433a1b1d52d330a09168','2' , '20', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('javier.cordoba', 'a6f985740ba62728698bc11de7462ff9','1' , '30', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('claudia.ospina', '7fb8ab3a49382415e3626b8107843e44','2' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('andreina.marron', '2b6f58e0b1d2179638f5537446419622','2' , '50', '1', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('americo.valles', 'c4ca4238a0b923820dcc509a6f75849b','3' , '01', '1', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('armando.hung', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('tara.persad', 'ead0a95787f77ac07ea5991934f789c3','1' , '30', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('sallyann.rampat', '0d38dd3e8e150a53478f1fe131fff1d8','1' , '33', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('melissa.mahabir', 'fcd47b1e44436b441741e928dd6bb3c6','1' , '33', '1', '1');
 
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('fredy.gomez', '4b43ae1b3c0a4cbfd79ea45be7da4236','1' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('esteban.gomez', '8c5d7a099c93ad64bc8179186ddc07d4','1' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('roberto.palacio', '290874d6910f619e8a0e583316eddd12','1' , '01', '1', '1');
-
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('angel.chacon', 'c7c59cb09991999fc7363cc87998a9b5','1' , '50', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('nelson.labrador', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1', '1');
-
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('gonzalo.alvarez', '795b425d8685310b66c6934cb15ef55a','3' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('vicente.gonzalez', '68a96d195b07c9f61bcb33a5cd311e5a','3' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('antonio.bruni', '9259595e9948a56494961874c68245df','3' , '01', '1', '1');
-INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('antonio.neri', 'cb1dc087fab57e79337e1582b9b1ffe2','3' , '01', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('diana.contreras', 'c4ca4238a0b923820dcc509a6f75849b','2' , '01', '1', '1');
 
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('ricauter.jurado', '643e8cff3f108b36b2b3aa816ecebe37','2' , '50', '1', '1');
 
