@@ -29,9 +29,9 @@ public class bsmlDaoImpl implements bsmlDao {
 	// list //////////////////////////////////////////////////////////////////////////////////
 	// list //////////////////////////////////////////////////////////////////////////////////
 
-	public List<Conbsml> list(String cia) {
-		//return em.createQuery("SELECT C FROM Conbsml as C WHERE C.ccia = '"+cia+"'").getResultList();
-		return em.createQuery("SELECT C FROM Conbsml as C").getResultList();
+	public List<Conbsml> list(String cia, String m, String y) {
+		return em.createQuery("SELECT C FROM Conbsml as C WHERE C.ccia = '"+cia+"' AND C.cpers = '"+m+"'" +" AND C.cyear = '"+y+"'" ).getResultList();
+		//return em.createQuery("SELECT C FROM Conbsml as C").getResultList();
 	}
 	
 	// //////////////////////////////////////////////////////////////////////////////////

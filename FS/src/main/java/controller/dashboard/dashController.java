@@ -41,6 +41,10 @@ public class dashController {
 	private enum Months {
 		January, February, March, April, May, June, July, August, September, October, November, December;
 	}
+	
+	private enum Years {
+		a2016, a2017, a2028;
+	}
 
 	// En éste controlador quedo el inicio
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
@@ -54,6 +58,7 @@ public class dashController {
 			model.addAttribute("tas", ((session) model.asMap().get("user_inicio")).getDash_tasa());
 			model.addAttribute("anio",((session) model.asMap().get("user_inicio")).getAnio());
 			model.addAttribute("usuario",((session) model.asMap().get("user_inicio")).getUsuario());
+			model.addAttribute("month",Months.values());
 			model.addAttribute("tipo",((session) model.asMap().get("user_inicio")).getTipoUsuario());
 			if (((session) model.asMap().get("user_inicio")).getTipoUsuario() == 2) {
 				model.addAttribute("companyList", companyService.listCompany(((session) model.asMap().get("user_inicio")).getDash_region()));
@@ -133,7 +138,7 @@ public class dashController {
 	///////////////////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(value = "/bsml", method = RequestMethod.GET)
-	public String salesYear(Model model, @RequestParam String t, @RequestParam String op10) {
+	public String salesYear(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c) {
 		if (model.containsAttribute("user_inicio") == true) {
 			StringBuffer buf = new StringBuffer();
 			DecimalFormat ftm = new DecimalFormat("###,###.###");
@@ -141,10 +146,17 @@ public class dashController {
 			String r=((session) model.asMap().get("user_inicio")).getDash_region();
 			String n=((session) model.asMap().get("user_inicio")).getDash_nia();
 			//String nit=((session) model.asMap().get("user_inicio")).get;
-			int m= Integer.parseInt(((session) model.asMap().get("user_inicio")).getMes());
+			int mmes= Integer.parseInt(((session) model.asMap().get("user_inicio")).getMes());
 			if (!r.equals("Todas")) r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
-			if (!n.equals("Todas")) n = companyService.listCompany__(((session) model.asMap().get("user_inicio")).getDash_nia()).get(0).getDescripcion();
-			List<Conbsml> listado = Service.list(((session) model.asMap().get("user_inicio")).getDash_nia());
+			if (!n.equals("Todas")) n = companyService.listCompany__(c).get(0).getDescripcion();
+			List<Conbsml> listado = Service.list(c, month, year);
+			model.addAttribute("navegacion",
+					"Region: " + r + " >> " +
+					"Company: " + n + " >> " +
+					"Currency: " + (m!="u"?"USD":"COP") + " >> " +
+					" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+					" >> Year: " + year
+					);
 			
 			buf.append("<!DOCTYPE html><html><head><title>Finance System</title>");
 			buf.append("<style>table { border-collapse: collapse; width: 100%; line-height: 100%; font: 90% monospace; table-layout: fixed; } th {    text-align: center; padding: 10px; font: 90% monospace;} td { padding: 0px;} body { margin-top: 20px; margin-left: 50px; }</style></head>");
@@ -187,7 +199,10 @@ public class dashController {
 			model.addAttribute("meta",buf);
 			model.addAttribute("bsml",listado);
 			model.addAttribute("buf",buf);
-			return "fs/bsml";
+			if (m.equals("u"))
+				return "fs/bsmu";
+			else
+				return "fs/bsml";
 		} else {
 			return "redirect:/index/ingreso";
 		}

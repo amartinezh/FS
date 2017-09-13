@@ -66,7 +66,7 @@
 			<div id="content" class="container">
 				<div class="jumbotron text-center">
 					<!-- <a href="javascript:void(0);" class="username text-left"> <c:out value="${r3g	}" /> </a> -->
-					<h1>BALANCED SCORECARD</h1>
+					<h1>Financial Statements</h1>
 					<c:if test="${tipo ne 1}">
 		                <select class="input-sm" id="nia" class="nia" name="nia">
 							<c:forEach items="${companyList}" var="comp"
@@ -77,7 +77,18 @@
 						<br>					
 						<br>
 					</c:if>
-					
+	                <select class="input-sm" id="month" class="month" name="month">
+						<c:forEach items="${month}" var="comp"
+							varStatus="loopCounter">
+							<option value="${loopCounter.index+1}">${month[loopCounter.index]}</option>
+						</c:forEach>
+					</select>
+					<select class="input-sm" id="year" class="year" name="year">
+					</select>
+					<select class="input-sm" id="mon" class="mon" name="mon">
+					</select>
+					<br>					
+					<br>
 					<a href="javascript:openPage(1)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Balance Sheet</strong> </a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="javascript:openPage(1)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (A)</strong> </a>
@@ -159,7 +170,18 @@
 		
 		<script>
 		
+		var currentTime = new Date()
+		var month = currentTime.getMonth()
+		var year = currentTime.getFullYear()
+		
 		$('#nia').val('${c1a}');
+		
+		$('#month').val(month);
+		$("#year").append('<option value='+(year - 1)+'>'+(year - 1)+'</option>');
+		$("#year").append('<option value='+year+'>'+year+'</option>');
+		$('#year').val(year);
+		$("#mon").append('<option value="u">USD</option>');
+		$("#mon").append('<option value="l">COP</option>');
 		
 		openPage = function(op) {
 			var nia = "&nia=n";
@@ -169,7 +191,8 @@
 			}
 			switch(op){
 				case 1 :
-					location.href = "menu?t=Consolidated Balance Sheet&r3g=${r3g}"+nia+"&op10=1";
+					//location.href = "menu?t=Consolidated Balance Sheet&r3g=${r3g}"+nia+"&op10=1";
+					location.href = "bsml?t=Consolidated Balance Sheet Information&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
 					break;
 				case 2 :
 					location.href = "menu?t=Consolidated Statement Of Income Acumulate&r3g=${r3g}"+nia+"&op10=2";

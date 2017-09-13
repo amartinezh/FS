@@ -15,7 +15,7 @@ public class bsmlServiceImpl implements bsmlService {
 	@Autowired
 	private bsmlDao Dao;
 	
-	public List<Conbsml> list(String cia){
-		return Dao.list(cia);
+	public List<Conbsml> list(String cia, String m, String y){
+		return Dao.list(cia, m, y);
 	}
 }

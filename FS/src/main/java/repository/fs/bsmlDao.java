@@ -6,5 +6,5 @@ import domain.fs.Conbsml;
 import domain.session.session;
 
 public interface bsmlDao {
-	public List<Conbsml> list(String cia);
+	public List<Conbsml> list(String cia, String m, String y);
 }
