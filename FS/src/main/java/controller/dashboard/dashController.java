@@ -172,19 +172,28 @@ public class dashController {
 			if (!n.equals("Todas")) n = companyService.listCompany__(c).get(0).getDescripcion();
 			List<Conbsmu> listadou = null;
 			List<Conbsml> listadol = null;
-			if (m.equals("u"))
+			if (m.equals("u")){
 				listadou = bsmuService.list(c, month, year);
-			else
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: USD >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
+			else{
 				listadol = bsmlService.list(c, month, year);
-				
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: COP >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
 			
-			model.addAttribute("navegacion",
-					"Region: " + r + " >> " +
-					"Company: " + n + " >> " +
-					"Currency: " + (m!="u"?"USD":"COP") + " >> " +
-					" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
-					" >> Year: " + year
-					);
+			
 			
 			/*buf.append("<!DOCTYPE html><html><head><title>Finance System</title>");
 			buf.append("<style>table { border-collapse: collapse; width: 100%; line-height: 100%; font: 90% monospace; table-layout: fixed; } th {    text-align: center; padding: 10px; font: 90% monospace;} td { padding: 0px;} body { margin-top: 20px; margin-left: 50px; }</style></head>");
@@ -253,19 +262,26 @@ public class dashController {
 			if (!n.equals("Todas")) n = companyService.listCompany__(c).get(0).getDescripcion();
 			List<Conpgau> listadou = null;
 			List<Conpgal> listadol = null;
-			if (m.equals("u"))
+			if (m.equals("u")){
 				listadou = pgauService.list(c, month, year);
-			else
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: USD >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
+			else{
 				listadol = pgalService.list(c, month, year);
-				
-			
-			model.addAttribute("navegacion",
-					"Region: " + r + " >> " +
-					"Company: " + n + " >> " +
-					"Currency: " + (m!="u"?"USD":"COP") + " >> " +
-					" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
-					" >> Year: " + year
-					);
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: COP >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
 			
 			model.addAttribute("r",r);
 			model.addAttribute("meta",buf);
@@ -299,16 +315,26 @@ public String pgm(Model model, @RequestParam String t, @RequestParam String year
 				n = companyService.listCompany__(c).get(0).getDescripcion();
 			List<Conpgmu> listadou = null;
 			List<Conpgml> listadol = null;
-			if (m.equals("u"))
+			if (m.equals("u")){
 				listadou = pgmuService.list(c, month, year);
-			else
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: USD >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
+			else{
 				listadol = pgmlService.list(c, month, year);
-
-			model.addAttribute("navegacion", "Region: " + r + " >> "
-					+ "Company: " + n + " >> " + "Currency: "
-					+ (m != "u" ? "USD" : "COP") + " >> " + " >> Month: "
-					+ Months.values()[Integer.parseInt(month) - 1]
-					+ " >> Year: " + year);
+				model.addAttribute("navegacion",
+						"Region: " + r + " >> " +
+						"Company: " + n + " >> " +
+						"Currency: COP >> " +
+						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+						" >> Year: " + year
+						);
+			}
 
 			model.addAttribute("r", r);
 			model.addAttribute("meta", buf);

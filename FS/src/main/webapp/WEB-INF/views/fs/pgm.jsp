@@ -194,10 +194,12 @@
 						<th style="text-align: center; color: blue;">VARIATION</th>
 						<th style="text-align: center; color: blue;">LAST YEAR</th>
 						<th style="text-align: center; color: blue;">VARIATION</th>
+						<th style="text-align: center; color: blue;">LAST MONTH</th>
+						<th style="text-align: center; color: blue;">VARIATION</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${pga}" var="b" varStatus="loopCounter">
+					<c:forEach items="${pgm}" var="b" varStatus="loopCounter">
 						<c:choose>
 						    <c:when test="${b.cdesc == 'LINEA'}">
 						        <tr style="background-color: #D3D3D3">
@@ -225,6 +227,8 @@
 							<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
 							<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
 							<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
+							<td ><c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
+							<td ><c:if test="${b.cvar3 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar3}" type="number" /></c:if></td>
 						</tr>
 						<tr class="${color}">
 							
