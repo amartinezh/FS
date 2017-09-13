@@ -91,9 +91,9 @@
 					<br>
 					<a href="javascript:openPage(1)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Balance Sheet</strong> </a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="javascript:openPage(1)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (A)</strong> </a>
+					<a href="javascript:openPage(2)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (A)</strong> </a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="javascript:openPage(1)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (M)</strong> </a>
+					<a href="javascript:openPage(3)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (M)</strong> </a>
 					<br><br><br>
 					<a href="salir" class="btn btn-labeled btn-danger btn-lg"> <span class="btn-label"><i class="fa fa-power-off"></i></span>Exit </a>				    
 					<div id="usu">[${usuario}]</div>
@@ -191,14 +191,13 @@
 			}
 			switch(op){
 				case 1 :
-					//location.href = "menu?t=Consolidated Balance Sheet&r3g=${r3g}"+nia+"&op10=1";
 					location.href = "bsml?t=Consolidated Balance Sheet Information&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
 					break;
 				case 2 :
-					location.href = "menu?t=Consolidated Statement Of Income Acumulate&r3g=${r3g}"+nia+"&op10=2";
+					location.href = "pga?t=Consolidated Statement Of Income Acumulate&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
 					break;
 				case 3 :
-					location.href = "menu?t=Consolidate Statement Of Income Montly&r3g=${r3g}"+nia+"&op10=3";
+					location.href = "pgm?t=Consolidate Statement Of Income Montly&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
 					break;
 			}
 		}

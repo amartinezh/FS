@@ -195,7 +195,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${bsml}" var="b" varStatus="loopCounter">
+					<c:forEach items="${bsm}" var="b" varStatus="loopCounter">
 						<c:choose>
 						    <c:when test="${b.cdesc == 'LINEA'}">
 						        <tr style="background-color: #D3D3D3">

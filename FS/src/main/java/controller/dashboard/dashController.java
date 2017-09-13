@@ -9,14 +9,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import domain.adm.Plan;
 import domain.fs.Conbsml;
+import domain.fs.Conbsmu;
+import domain.fs.Conpgal;
+import domain.fs.Conpgau;
+import domain.fs.Conpgml;
+import domain.fs.Conpgmu;
 import domain.session.session;
 import service.fs.bsmlService;
+import service.fs.bsmuService;
+import service.fs.pgauService;
+import service.fs.pgalService;
+import service.fs.pgmuService;
+import service.fs.pgmlService;
 
 @Controller
 @RequestMapping("/indicadores")
@@ -24,7 +32,22 @@ import service.fs.bsmlService;
 public class dashController {
 
 	@Autowired
-	private bsmlService Service;
+	private bsmlService bsmlService;
+	
+	@Autowired
+	private bsmuService bsmuService;
+	
+	@Autowired
+	private pgauService pgauService;
+	
+	@Autowired
+	private pgalService pgalService;
+	
+	@Autowired
+	private pgmuService pgmuService;
+	
+	@Autowired
+	private pgmlService pgmlService;
 	
 	@Autowired
 	private service.adm.RegionService regionService;
@@ -145,11 +168,16 @@ public class dashController {
 			model.addAttribute("tit",t);
 			String r=((session) model.asMap().get("user_inicio")).getDash_region();
 			String n=((session) model.asMap().get("user_inicio")).getDash_nia();
-			//String nit=((session) model.asMap().get("user_inicio")).get;
-			int mmes= Integer.parseInt(((session) model.asMap().get("user_inicio")).getMes());
 			if (!r.equals("Todas")) r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
 			if (!n.equals("Todas")) n = companyService.listCompany__(c).get(0).getDescripcion();
-			List<Conbsml> listado = Service.list(c, month, year);
+			List<Conbsmu> listadou = null;
+			List<Conbsml> listadol = null;
+			if (m.equals("u"))
+				listadou = bsmuService.list(c, month, year);
+			else
+				listadol = bsmlService.list(c, month, year);
+				
+			
 			model.addAttribute("navegacion",
 					"Region: " + r + " >> " +
 					"Company: " + n + " >> " +
@@ -158,7 +186,7 @@ public class dashController {
 					" >> Year: " + year
 					);
 			
-			buf.append("<!DOCTYPE html><html><head><title>Finance System</title>");
+			/*buf.append("<!DOCTYPE html><html><head><title>Finance System</title>");
 			buf.append("<style>table { border-collapse: collapse; width: 100%; line-height: 100%; font: 90% monospace; table-layout: fixed; } th {    text-align: center; padding: 10px; font: 90% monospace;} td { padding: 0px;} body { margin-top: 20px; margin-left: 50px; }</style></head>");
 			buf.append("<body> <div style=\"overflow-x:auto;\"><table style=\" white-space: pre\"><tr><td align=\"left\" colspan=\"4\">GB BIOPACOL ANDINA S.A.S <br/> N.I.T.:  900588276 - 4  <br/> CON060R5 </td> <th colspan=\"4\">CONSOLIDATED BELANCE SHEET INFORMATION <br/> <br/>FEBRUARY  2.017 <br/>COP ('000') </th> <th colspan=\"4\"></th> </tr> ");
 			buf.append("<tr> <td colspan=\"4\"></td> <td align=\"right\">==============</td><td align=\"right\">==============</td> <td align=\"right\">==============</td> <td align=\"right\"></td> <td align=\"right\"></td><td align=\"right\"></td> </tr>");
@@ -195,20 +223,109 @@ public class dashController {
 				buf.append("</tr>");
 			}
 			buf.append("</table></div></body></html>");
+			*/
 			model.addAttribute("r",r);
 			model.addAttribute("meta",buf);
-			model.addAttribute("bsml",listado);
-			model.addAttribute("buf",buf);
 			if (m.equals("u"))
-				return "fs/bsmu";
+				model.addAttribute("bsm",listadou);
 			else
-				return "fs/bsml";
+				model.addAttribute("bsm",listadol);
+			
+			model.addAttribute("buf",buf);
+			return "fs/bsm";
 		} else {
 			return "redirect:/index/ingreso";
 		}
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/pga", method = RequestMethod.GET)
+	public String pga(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c) {
+		if (model.containsAttribute("user_inicio") == true) {
+			StringBuffer buf = new StringBuffer();
+			DecimalFormat ftm = new DecimalFormat("###,###.###");
+			model.addAttribute("tit",t);
+			String r=((session) model.asMap().get("user_inicio")).getDash_region();
+			String n=((session) model.asMap().get("user_inicio")).getDash_nia();
+			if (!r.equals("Todas")) r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
+			if (!n.equals("Todas")) n = companyService.listCompany__(c).get(0).getDescripcion();
+			List<Conpgau> listadou = null;
+			List<Conpgal> listadol = null;
+			if (m.equals("u"))
+				listadou = pgauService.list(c, month, year);
+			else
+				listadol = pgalService.list(c, month, year);
+				
+			
+			model.addAttribute("navegacion",
+					"Region: " + r + " >> " +
+					"Company: " + n + " >> " +
+					"Currency: " + (m!="u"?"USD":"COP") + " >> " +
+					" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+					" >> Year: " + year
+					);
+			
+			model.addAttribute("r",r);
+			model.addAttribute("meta",buf);
+			if (m.equals("u"))
+				model.addAttribute("pga",listadou);
+			else
+				model.addAttribute("pga",listadol);
+			
+			model.addAttribute("buf",buf);
+			return "fs/pga";
+		} else {
+			return "redirect:/index/ingreso";
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
+	
+///////////////////////////////////////////////////////////////////////////////////
+	
+@RequestMapping(value = "/pgm", method = RequestMethod.GET)
+public String pgm(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c) {
+		if (model.containsAttribute("user_inicio") == true) {
+			StringBuffer buf = new StringBuffer();
+			DecimalFormat ftm = new DecimalFormat("###,###.###");
+			model.addAttribute("tit", t);
+			String r = ((session) model.asMap().get("user_inicio")).getDash_region();
+			String n = ((session) model.asMap().get("user_inicio")).getDash_nia();
+			if (!r.equals("Todas"))
+				r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
+			if (!n.equals("Todas"))
+				n = companyService.listCompany__(c).get(0).getDescripcion();
+			List<Conpgmu> listadou = null;
+			List<Conpgml> listadol = null;
+			if (m.equals("u"))
+				listadou = pgmuService.list(c, month, year);
+			else
+				listadol = pgmlService.list(c, month, year);
+
+			model.addAttribute("navegacion", "Region: " + r + " >> "
+					+ "Company: " + n + " >> " + "Currency: "
+					+ (m != "u" ? "USD" : "COP") + " >> " + " >> Month: "
+					+ Months.values()[Integer.parseInt(month) - 1]
+					+ " >> Year: " + year);
+
+			model.addAttribute("r", r);
+			model.addAttribute("meta", buf);
+			if (m.equals("u"))
+				model.addAttribute("pgm", listadou);
+			else
+				model.addAttribute("pgm", listadol);
+
+			model.addAttribute("buf", buf);
+			return "fs/pgm";
+		} else {
+			return "redirect:/index/ingreso";
+		}
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
 	
 	@RequestMapping(value = "/salir", method = RequestMethod.GET)
 	public String salir(Model model, SessionStatus status) {
