@@ -220,13 +220,36 @@
 						        
 						    </c:otherwise>
 						</c:choose>
-							<td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
-							<td ><c:if test="${b.cvar3 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar3}" type="number" /></c:if></td>
+						<c:choose>
+						    <c:when test="${ti == '1'}">
+						       	<td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+								<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
+								<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+						    </c:when>    
+						    <c:otherwise>
+						        
+						        <c:choose>
+								    <c:when test="${ti == '2'}">
+								        <td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
+								    </c:when>    
+								    <c:otherwise>
+								        <td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
+										<td ><c:if test="${b.cvar3 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar3}" type="number" /></c:if></td>
+								    </c:otherwise>
+								</c:choose>
+						        
+						    </c:otherwise>
+						</c:choose>
+							
 						</tr>
 						<tr class="${color}">
 							
