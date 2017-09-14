@@ -299,59 +299,137 @@ public class dashController {
 	
 	///////////////////////////////////////////////////////////////////////////////////
 	
-///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+		
+	@RequestMapping(value = "/pgm", method = RequestMethod.GET)
+	public String pgm(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c) {
+			if (model.containsAttribute("user_inicio") == true) {
+				StringBuffer buf = new StringBuffer();
+				DecimalFormat ftm = new DecimalFormat("###,###.###");
+				model.addAttribute("tit", t);
+				String r = ((session) model.asMap().get("user_inicio")).getDash_region();
+				String n = ((session) model.asMap().get("user_inicio")).getDash_nia();
+				if (!r.equals("Todas"))
+					r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
+				if (!n.equals("Todas"))
+					n = companyService.listCompany__(c).get(0).getDescripcion();
+				List<Conpgmu> listadou = null;
+				List<Conpgml> listadol = null;
+				if (m.equals("u")){
+					listadou = pgmuService.list(c, month, year);
+					model.addAttribute("navegacion",
+							"Region: " + r + " >> " +
+							"Company: " + n + " >> " +
+							"Currency: USD >> " +
+							" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+							" >> Year: " + year
+							);
+				}
+				else{
+					listadol = pgmlService.list(c, month, year);
+					model.addAttribute("navegacion",
+							"Region: " + r + " >> " +
+							"Company: " + n + " >> " +
+							"Currency: COP >> " +
+							" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
+							" >> Year: " + year
+							);
+				}
 	
-@RequestMapping(value = "/pgm", method = RequestMethod.GET)
-public String pgm(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c) {
-		if (model.containsAttribute("user_inicio") == true) {
-			StringBuffer buf = new StringBuffer();
-			DecimalFormat ftm = new DecimalFormat("###,###.###");
-			model.addAttribute("tit", t);
-			String r = ((session) model.asMap().get("user_inicio")).getDash_region();
-			String n = ((session) model.asMap().get("user_inicio")).getDash_nia();
-			if (!r.equals("Todas"))
-				r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
-			if (!n.equals("Todas"))
-				n = companyService.listCompany__(c).get(0).getDescripcion();
-			List<Conpgmu> listadou = null;
-			List<Conpgml> listadol = null;
-			if (m.equals("u")){
-				listadou = pgmuService.list(c, month, year);
-				model.addAttribute("navegacion",
-						"Region: " + r + " >> " +
-						"Company: " + n + " >> " +
-						"Currency: USD >> " +
-						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
-						" >> Year: " + year
-						);
+				model.addAttribute("r", r);
+				model.addAttribute("meta", buf);
+				if (m.equals("u"))
+					model.addAttribute("pgm", listadou);
+				else
+					model.addAttribute("pgm", listadol);
+	
+				model.addAttribute("buf", buf);
+				return "fs/pgm";
+			} else {
+				return "redirect:/index/ingreso";
 			}
-			else{
-				listadol = pgmlService.list(c, month, year);
-				model.addAttribute("navegacion",
-						"Region: " + r + " >> " +
-						"Company: " + n + " >> " +
-						"Currency: COP >> " +
-						" >> Month: " + Months.values()[Integer.parseInt(month)-1] +
-						" >> Year: " + year
-						);
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/rpt", method = RequestMethod.GET)
+	public String rpt(Model model, @RequestParam String t, @RequestParam String year, @RequestParam String month, @RequestParam String m, @RequestParam String c, @RequestParam String ti) {
+			if (model.containsAttribute("user_inicio") == true) {
+				StringBuffer buf = new StringBuffer();
+				DecimalFormat ftm = new DecimalFormat("###,###.###");
+				model.addAttribute("tit", t);
+				String r = ((session) model.asMap().get("user_inicio")).getDash_region();
+				String n = ((session) model.asMap().get("user_inicio")).getDash_nia();
+				if (!r.equals("Todas"))
+					r = regionService.getRegion(((session) model.asMap().get("user_inicio")).getDash_region()).get(0).getDescripcion();
+				if (!n.equals("Todas"))
+					n = companyService.listCompany__(c).get(0).getDescripcion();
+				List<Conbsmu> listado_bsmu = null;
+				List<Conbsml> listado_bsml = null;
+				List<Conpgau> listado_pgau = null;
+				List<Conpgal> listado_pgal = null;
+				List<Conpgmu> listado_pgmu = null;
+				List<Conpgml> listado_pgml = null;
+				char hi = ti.charAt(0);
+				switch (hi){
+					case '1': 
+						if (m.equals("u")){
+							listado_bsmu = bsmuService.list(c, month, year);
+							model.addAttribute("data", listado_bsmu);
+						}
+						else{
+							listado_bsml = bsmlService.list(c, month, year);
+							model.addAttribute("data", listado_bsml);
+						}
+						break;
+					case '2': 
+						if (m.equals("u")){
+							listado_pgau = pgauService.list(c, month, year);
+							model.addAttribute("data", listado_pgau);
+						}
+						else{
+							listado_pgal = pgalService.list(c, month, year);
+							model.addAttribute("data", listado_pgal);
+						}
+						break;
+					case '3': 
+						if (m.equals("u")){
+							listado_pgmu = pgmuService.list(c, month, year);
+							model.addAttribute("data", listado_pgmu);
+						}
+						else{
+							listado_pgml = pgmlService.list(c, month, year);
+							model.addAttribute("data", listado_pgml);
+						}
+						break;
+				}
+				if (m.equals("u")){
+					model.addAttribute("navegacion",
+							"<br>" + n + " >> " +
+							"<br>USD" +
+							" <br>" + Months.values()[Integer.parseInt(month)-1] + " " + year
+							);
+				}
+				else{
+					model.addAttribute("navegacion",
+							"<br>" + r + " >> " +
+							"<br>" + n + " >> " +
+							"<br>COP('000) " +
+							"<br>" + Months.values()[Integer.parseInt(month)-1] + " " + year
+							);
+				}
+				model.addAttribute("ti", ti);
+				model.addAttribute("r", r);
+				model.addAttribute("meta", buf);
+				model.addAttribute("buf", buf);
+				return "fs/rpt";
+			} else {
+				return "redirect:/index/ingreso";
 			}
-
-			model.addAttribute("r", r);
-			model.addAttribute("meta", buf);
-			if (m.equals("u"))
-				model.addAttribute("pgm", listadou);
-			else
-				model.addAttribute("pgm", listadol);
-
-			model.addAttribute("buf", buf);
-			return "fs/pgm";
-		} else {
-			return "redirect:/index/ingreso";
-		}
-}
-
-///////////////////////////////////////////////////////////////////////////////////
-
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(value = "/salir", method = RequestMethod.GET)
 	public String salir(Model model, SessionStatus status) {

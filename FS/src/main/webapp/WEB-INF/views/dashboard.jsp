@@ -191,13 +191,13 @@
 			}
 			switch(op){
 				case 1 :
-					location.href = "bsml?t=Consolidated Balance Sheet Information&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
+					location.href = "rpt?t=Consolidated Balance Sheet Information&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=1";
 					break;
 				case 2 :
-					location.href = "pga?t=Consolidated Statement Of Income Acumulate&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
+					location.href = "rpt?t=Consolidated Statement Of Income Acumulate&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=2";
 					break;
 				case 3 :
-					location.href = "pgm?t=Consolidate Statement Of Income Montly&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val();
+					location.href = "rpt?t=Consolidate Statement Of Income Montly&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=3";
 					break;
 			}
 		}
