@@ -406,15 +406,14 @@ public class dashController {
 				}
 				if (m.equals("u")){
 					model.addAttribute("navegacion",
-							"<br>" + n + " >> " +
+							"<br>" + n +
 							"<br>USD" +
 							" <br>" + Months.values()[Integer.parseInt(month)-1] + " " + year
 							);
 				}
 				else{
 					model.addAttribute("navegacion",
-							"<br>" + r + " >> " +
-							"<br>" + n + " >> " +
+							"<br>" + n + 
 							"<br>COP('000) " +
 							"<br>" + Months.values()[Integer.parseInt(month)-1] + " " + year
 							);

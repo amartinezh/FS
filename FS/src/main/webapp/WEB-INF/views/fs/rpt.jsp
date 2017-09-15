@@ -156,9 +156,7 @@
 							<div class="widget-body no-padding">
 								<h1><strong>${tit}</strong></h1>
 								<div id="dialog-message" title="Drill Down">
-									<div id="opc" width="1500" height="100" style="background-color:#ffffff;">
-										
-									</div>
+									<h1>${navegacion}</h1>
 								</div>
 							</div>
 							
@@ -173,15 +171,7 @@
 				<!-- WIDGET END -->
 
 			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-					<h1 class="page-title txt-color-blueDark">
-						<i class="fa fa-list-alt fa-fw "></i>
-						<span><c:out value="${navegacion}" />
-						</span>
-					</h1>
-				</div>
-			</div>
+			<div class="row"></div>
 			<c:set var="color" value="success"/>
 			<table style=" white-space: pre" id="tbl" class="table table-bordered" width="100%">
 				<thead>
@@ -189,19 +179,42 @@
 					</tr>
 					<tr>
 						<th style="text-align: center; color: blue;"></th>
-						<th style="text-align: center; color: blue;">ACTUAL</th>
-						<th style="text-align: center; color: blue;">BUDGET</th>
-						<th style="text-align: center; color: blue;">VARIATION</th>
-						<th style="text-align: center; color: blue;">LAST YEAR</th>
-						<th style="text-align: center; color: blue;">VARIATION</th>
-						<th style="text-align: center; color: blue;">LAST MONTH</th>
-						<th style="text-align: center; color: blue;">VARIATION</th>
+						<c:choose>
+							<c:when test="${ti == '1'}">
+						       	<th style="text-align: center; color: blue;">ACTUAL</th>
+								<th style="text-align: center; color: blue;">LAST MONT</th>
+								<th style="text-align: center; color: blue;">LAST YEAR</th>
+						    </c:when>    
+						    <c:otherwise>
+						        <c:choose>
+								    <c:when test="${ti == '2'}">
+								    	<th style="text-align: center; color: blue;">ACTUAL</th>
+										<th style="text-align: center; color: blue;">BUDGET</th>
+										<th style="text-align: center; color: blue;">VARIATION</th>
+										<th style="text-align: center; color: blue;">LAST YEAR</th>
+										<th style="text-align: center; color: blue;">VARIATION</th>
+								    </c:when>    
+								    <c:otherwise>
+								        <th style="text-align: center; color: blue;">ACTUAL</th>
+										<th style="text-align: center; color: blue;">BUDGET</th>
+										<th style="text-align: center; color: blue;">VARIATION</th>
+										<th style="text-align: center; color: blue;">LAST YEAR</th>
+										<th style="text-align: center; color: blue;">VARIATION</th>
+										<th style="text-align: center; color: blue;">LAST MONTH</th>
+										<th style="text-align: center; color: blue;">VARIATION</th>
+								    </c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${pgm}" var="b" varStatus="loopCounter">
+					<c:set var="linea" value="..."/>
+					<c:forEach items="${data}" var="b" varStatus="loopCounter">
+						
 						<c:choose>
 						    <c:when test="${b.cdesc == 'LINEA'}">
+						    	<c:set var="linea" value="--------------------------------"/>
 						        <tr style="background-color: #D3D3D3">
 						        <td >&nbsp</td>
 						    </c:when>    
@@ -209,10 +222,12 @@
 						        
 						        <c:choose>
 								    <c:when test="${b.cdesc == 'DOBLE LINEA'}">
-								        <tr style="background-color: #FF5733 ">
+								    	<c:set var="linea" value="==================="/>
+								        <tr style="background-color:  #e6b0aa  ">
 								        <td >&nbsp</td>
 								    </c:when>    
 								    <c:otherwise>
+								    	<c:set var="linea" value=""/>
 								        <tr class="${color}">
 								        <td >${ b.cdesc } &nbsp</td>
 								    </c:otherwise>
@@ -220,30 +235,31 @@
 						        
 						    </c:otherwise>
 						</c:choose>
+						
 						<c:choose>
 						    <c:when test="${ti == '1'}">
-						       	<td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
-								<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
-								<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+						       	<td >${linea}<c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+								<td >${linea}<c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
+								<td >${linea}<c:if test="${b.cvalaa != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalaa}" type="number" /></c:if></td>
 						    </c:when>    
 						    <c:otherwise>
 						        
 						        <c:choose>
 								    <c:when test="${ti == '2'}">
-								        <td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
+								        <td >${linea}<c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
 								    </c:when>    
 								    <c:otherwise>
-								        <td ><c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
-										<td ><c:if test="${b.cvar3 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar3}" type="number" /></c:if></td>
+								        <td >${linea}<c:if test="${b.cvalm != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalm}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvalp != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalp}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvar1 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar1}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvalmya != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalmya}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvar2 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar2}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvalma != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvalma}" type="number" /></c:if></td>
+										<td >${linea}<c:if test="${b.cvar3 != '.00'}"><fmt:formatNumber pattern="###,###,###" value="${b.cvar3}" type="number" /></c:if></td>
 								    </c:otherwise>
 								</c:choose>
 						        
@@ -251,9 +267,9 @@
 						</c:choose>
 							
 						</tr>
-						<tr class="${color}">
+						<!-- <tr class="${color}">
 							
-						</tr>
+						</tr>  -->   
 						<c:choose>
 							<c:when test="${color=='success'}">
 								<c:set var="color" value="warning"/>
