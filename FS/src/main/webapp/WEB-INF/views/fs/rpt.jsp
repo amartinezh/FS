@@ -213,7 +213,7 @@
 					<c:set var="estilo" value=""/>
 					<c:forEach items="${data}" var="b" varStatus="loopCounter">
 						<c:choose>
-						    <c:when test="${b.op == '*'}">
+						    <c:when test="${b.op == 'N'}">
 						    	<c:set var="estilo" value="font-weight: bold;"/>
 						    </c:when>    
 						    <c:otherwise>
