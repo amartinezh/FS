@@ -46,6 +46,9 @@ public class Conpgal {
 	
 	@Column(name = "cvar2")
 	private String cvar2;
+	
+	@Column(name = "op")
+	private String op;
 
 	public String getCcia() {
 		return ccia;
@@ -127,6 +130,14 @@ public class Conpgal {
 		this.cvar2 = cvar2;
 	}
 
+	public String getOp() {
+		return op;
+	}
+
+	public void setOp(String op) {
+		this.op = op;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -141,6 +152,7 @@ public class Conpgal {
 		result = prime * result + ((cvar1 == null) ? 0 : cvar1.hashCode());
 		result = prime * result + ((cvar2 == null) ? 0 : cvar2.hashCode());
 		result = prime * result + ((cyear == null) ? 0 : cyear.hashCode());
+		result = prime * result + ((op == null) ? 0 : op.hashCode());
 		return result;
 	}
 
@@ -203,8 +215,11 @@ public class Conpgal {
 				return false;
 		} else if (!cyear.equals(other.cyear))
 			return false;
+		if (op == null) {
+			if (other.op != null)
+				return false;
+		} else if (!op.equals(other.op))
+			return false;
 		return true;
-	} 
-
-	
+	}
 }

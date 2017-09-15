@@ -40,6 +40,9 @@ public class Conbsml {
 	
 	@Column(name = "cvalaa")
 	private String cvalaa;
+	
+	@Column(name = "op")
+	private String op;
 
 	public String getCcia() {
 		return ccia;
@@ -105,6 +108,14 @@ public class Conbsml {
 		this.cvalaa = cvalaa;
 	}
 
+	public String getOp() {
+		return op;
+	}
+
+	public void setOp(String op) {
+		this.op = op;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -117,6 +128,7 @@ public class Conbsml {
 		result = prime * result + ((cvalm == null) ? 0 : cvalm.hashCode());
 		result = prime * result + ((cvalma == null) ? 0 : cvalma.hashCode());
 		result = prime * result + ((cyear == null) ? 0 : cyear.hashCode());
+		result = prime * result + ((op == null) ? 0 : op.hashCode());
 		return result;
 	}
 
@@ -168,6 +180,11 @@ public class Conbsml {
 			if (other.cyear != null)
 				return false;
 		} else if (!cyear.equals(other.cyear))
+			return false;
+		if (op == null) {
+			if (other.op != null)
+				return false;
+		} else if (!op.equals(other.op))
 			return false;
 		return true;
 	}

@@ -29,7 +29,7 @@ CREATE TABLE fs.CONPGML(
   CVAR2 character varying, -- variacion
   CVALMA character varying, -- mes anterior
   CVAR3 character varying, -- variacion
- 
+  op character varying, -- option
   CONSTRAINT CONPGML_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGML OWNER TO postgres;
 
@@ -48,6 +48,7 @@ CREATE TABLE fs.CONPGMU(
   CVAR2 character varying, -- variacion
   CVALMA character varying, -- mes anterior
   CVAR3 character varying, -- variacion
+  op character varying, -- option
   CONSTRAINT CONPGMU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGMU OWNER TO postgres;
 
@@ -62,6 +63,7 @@ CREATE TABLE fs.CONBSML(
   CVALM character varying, -- al mes actual 
   CVALMA character varying, -- al mes anterior
   CVALAA character varying, -- año anterior
+  op character varying, -- option
   CONSTRAINT CONBSML_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONBSML OWNER TO postgres;
 
@@ -76,6 +78,7 @@ CREATE TABLE fs.CONBSMU(
   CVALM character varying, -- al mes actual 
   CVALMA character varying, -- al mes anterior
   CVALAA character varying, -- año anterior
+  op character varying, -- option
   CONSTRAINT CONBSMU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONBSMU OWNER TO postgres;
 
@@ -92,6 +95,7 @@ CREATE TABLE fs.CONPGAL(
   CVAR1 character varying, -- variacion
   CVALMYA character varying, -- mes ano ant 
   CVAR2 character varying, -- variacion
+  op character varying, -- option
   CONSTRAINT CONPGAL_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAL OWNER TO postgres;
 
@@ -108,6 +112,7 @@ CREATE TABLE fs.CONPGAU(
   CVAR1 character varying, -- variacion
   CVALMYA character varying, -- mes ano ant 
   CVAR2 character varying, -- variacion
+  op character varying, -- option
   CONSTRAINT CONPGAU_pk PRIMARY KEY (CCIA, CLINE, CYEAR, CPERS)
 )WITH (OIDS=FALSE); ALTER TABLE fs.CONPGAU OWNER TO postgres;
 

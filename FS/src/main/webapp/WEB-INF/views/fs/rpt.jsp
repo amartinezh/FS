@@ -210,12 +210,20 @@
 				</thead>
 				<tbody>
 					<c:set var="linea" value="..."/>
+					<c:set var="estilo" value=""/>
 					<c:forEach items="${data}" var="b" varStatus="loopCounter">
-						
+						<c:choose>
+						    <c:when test="${b.op == '*'}">
+						    	<c:set var="estilo" value="font-weight: bold;"/>
+						    </c:when>    
+						    <c:otherwise>
+						    	<c:set var="estilo" value=""/>
+						    </c:otherwise>
+						</c:choose>
 						<c:choose>
 						    <c:when test="${b.cdesc == 'LINEA'}">
 						    	<c:set var="linea" value="--------------------------------"/>
-						        <tr style="background-color: #D3D3D3">
+						        <tr style="background-color: #D3D3D3; ${estilo}">
 						        <td >&nbsp</td>
 						    </c:when>    
 						    <c:otherwise>
@@ -223,12 +231,12 @@
 						        <c:choose>
 								    <c:when test="${b.cdesc == 'DOBLE LINEA'}">
 								    	<c:set var="linea" value="==================="/>
-								        <tr style="background-color:  #e6b0aa  ">
+								        <tr style="background-color:  #e6b0aa; ${estilo}">
 								        <td >&nbsp</td>
 								    </c:when>    
 								    <c:otherwise>
 								    	<c:set var="linea" value=""/>
-								        <tr class="${color}">
+								        <tr style="${estilo}" class="${color}">
 								        <td >${ b.cdesc } &nbsp</td>
 								    </c:otherwise>
 								</c:choose>
