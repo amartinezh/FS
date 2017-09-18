@@ -328,6 +328,7 @@ INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Gener
 INSERT INTO gestion.nivel_organico(descripcion, area_estrategica) VALUES ('Regional V.P.', 'Estrategic');
 
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('americo.valles', 'c4ca4238a0b923820dcc509a6f75849b','3' , '1', '1', '1');
+INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('hugo.barrios', 'c4ca4238a0b923820dcc509a6f75849b','3' , '1', '1', '1');
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('armando.hung', 'c4ca4238a0b923820dcc509a6f75849b','2' , '1', '1', '1');
 
 INSERT INTO gestion.users( id, pass, type_id, comp_comp_id, curr_currency_id, nivel_organico_id) VALUES ('diana.contreras', 'c4ca4238a0b923820dcc509a6f75849b','2' , '1', '1', '1');
