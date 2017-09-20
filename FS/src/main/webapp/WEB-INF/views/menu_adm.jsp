@@ -147,22 +147,22 @@
 				case 1 :
 					//location.target = "des";
 					//location.href = "/kpi/user";
-					window.open('/kpi/user','des'); 
+					window.open('/fs/user','des'); 
 					break;
 				case 2 :
-					window.open('/kpi/region','des'); 
+					window.open('/fs/region','des'); 
 					break;
 				case 3 :
-					window.open('/kpi/company','des'); 
+					window.open('/fs/company','des'); 
 					break;
 				case 4 :
-					window.open('/kpi/currency','des'); 
+					window.open('/fs/currency','des'); 
 					break;
 				case 5 :
-					window.open('/kpi/typeuser','des'); 
+					window.open('/fs/typeuser','des'); 
 					break;
 				case 6 :
-					window.open('/kpi/nivel','des'); 
+					window.open('/fs/nivel','des'); 
 					break;
 				case 7 :
 					//window.open('/kpi/nivel','des'); 

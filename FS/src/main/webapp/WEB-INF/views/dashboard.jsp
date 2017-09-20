@@ -191,7 +191,7 @@
 			}
 			switch(op){
 				case 1 :
-					location.href = "rpt?t=Consolidated Balance Sheet Information&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=1";
+					location.href = "rpt?t=Consolidated Balance Sheet&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=1";
 					break;
 				case 2 :
 					location.href = "rpt?t=Consolidated Statement Of Income Acumulate&year="+$('#year').val()+"&month="+$('#month').val()+"&m="+$('#mon').val()+"&c="+$('#nia').val()+"&ti=2";

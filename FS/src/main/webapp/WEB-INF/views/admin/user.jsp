@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>Balanced Scorecard</title>
+<title>Finalcial Statement</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -779,7 +779,7 @@
 								timeout : 8000
 						 });
 					 }
-					 else{alert(data);
+					 else{//alert(data);
 						 var res = data.split(":::");
 						 $('#datatable_fixed_column').dataTable().fnAddData( [res[0],res[1], res[2],res[3],res[4],res[5]] );
 						 $.smallBox({
@@ -940,7 +940,7 @@
 			$('#cance').show();
 			document.getElementById('elboton').innerHTML='Actualizar';
 			
-			alert(nRow);
+			//alert(nRow);
 			$('#datatable_fixed_column').dataTable().fnDeleteRow(nRow);
 			$.smallBox({
 				title : "Inició la modificación del registro",
