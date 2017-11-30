@@ -95,6 +95,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="javascript:openPage(3)" id="dialog_link" class="btn btn-info btn-lg"> Consolidated <br> <strong>Statement Of Income (M)</strong> </a>
 					<br><br><br>
+					
 					<a href="salir" class="btn btn-labeled btn-danger btn-lg"> <span class="btn-label"><i class="fa fa-power-off"></i></span>Exit </a>				    
 					<div id="usu">[${usuario}]</div>
 				</div>
